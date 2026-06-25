@@ -1,0 +1,102 @@
+/* ============================================================
+   OBRA KASI GAMES — COLOR TOKENS
+   Rooted palette: pula (maroon), luntian (forest), itim (ink),
+   bughaw (azure, complementary cool), and a cream "paper" ground.
+   ============================================================ */
+
+:root {
+  /* ---- PULA · maroon (primary brand / traditional dye red) ---- */
+  --pula-50:  #fbeaea;
+  --pula-100: #f4cccc;
+  --pula-200: #e69a9a;
+  --pula-300: #d36464;
+  --pula-400: #b73434;
+  --pula-500: #8b0000; /* base */
+  --pula-600: #760000;
+  --pula-700: #5e0000;
+  --pula-800: #470000;
+  --pula-900: #300000;
+
+  /* ---- LUNTIAN · forest (secondary / palay-field green) ---- */
+  --luntian-50:  #ecf2ee;
+  --luntian-100: #cfe0d7;
+  --luntian-200: #a3c2b1;
+  --luntian-300: #6f9c84;
+  --luntian-400: #45735c;
+  --luntian-500: #2d4f3e; /* base */
+  --luntian-600: #244033;
+  --luntian-700: #1b3127;
+  --luntian-800: #13231c;
+  --luntian-900: #0c1812;
+
+  /* ---- BUGHAW · azure (complementary cool accent) ---- */
+  --bughaw-50:  #e9f3f8;
+  --bughaw-100: #c7e0ec;
+  --bughaw-200: #92c1d8;
+  --bughaw-300: #5a9fc1;
+  --bughaw-400: #2f7da3;
+  --bughaw-500: #1f5d80; /* base */
+  --bughaw-600: #194c69;
+  --bughaw-700: #133a51;
+  --bughaw-800: #0e2a3b;
+  --bughaw-900: #091b27;
+
+  /* ---- ITIM · warm ink neutrals (text & dark grounds) ---- */
+  --itim-900: #141312; /* deepest */
+  --itim-800: #1a1a1a; /* base ink */
+  --itim-700: #2b2825;
+  --itim-600: #423d37;
+  --itim-500: #5e574e;
+  --itim-400: #847b6f;
+  --itim-300: #aaa093;
+  --itim-200: #cfc6b6;
+  --itim-100: #e7ddca;
+
+  /* ---- BUHANGIN · cream paper grounds (warm sand) ---- */
+  --buhangin-50:  #fffdf7;
+  --buhangin-100: #fcf1d9; /* base paper */
+  --buhangin-200: #f6e6c4;
+  --buhangin-300: #eed8aa;
+  --buhangin-400: #e2c587;
+
+  /* ---- SEMANTIC: surfaces ---- */
+  --bg:            var(--buhangin-100);
+  --bg-deep:       var(--buhangin-200);
+  --surface:       var(--buhangin-50);
+  --surface-raised: #ffffff;
+  --surface-sunken: var(--buhangin-200);
+  --surface-ink:   var(--itim-800);   /* dark mode panels */
+  --surface-ink-2: var(--itim-700);
+
+  /* ---- SEMANTIC: text ---- */
+  --text:        var(--itim-800);
+  --text-muted:  var(--itim-500);
+  --text-faint:  var(--itim-400);
+  --text-on-dark: var(--buhangin-100);
+  --text-on-dark-muted: var(--itim-300);
+  --text-on-brand: var(--buhangin-100);
+
+  /* ---- SEMANTIC: brand roles ---- */
+  --primary:        var(--pula-500);
+  --primary-hover:  var(--pula-600);
+  --primary-press:  var(--pula-700);
+  --secondary:      var(--luntian-500);
+  --secondary-hover: var(--luntian-600);
+  --accent:         var(--bughaw-500);
+  --accent-hover:   var(--bughaw-600);
+
+  /* ---- SEMANTIC: lines & borders ---- */
+  --border:        color-mix(in srgb, var(--itim-800) 16%, transparent);
+  --border-strong: color-mix(in srgb, var(--itim-800) 32%, transparent);
+  --border-ink:    var(--itim-800);
+  --hairline:      color-mix(in srgb, var(--itim-800) 9%, transparent);
+
+  /* ---- SEMANTIC: status ---- */
+  --success:  #2f7d4f;
+  --warning:  #c97a14;
+  --danger:   var(--pula-500);
+  --info:     var(--bughaw-500);
+
+  /* ---- FOCUS ---- */
+  --focus-ring: color-mix(in srgb, var(--bughaw-500) 55%, transparent);
+}
