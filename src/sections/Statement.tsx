@@ -9,7 +9,7 @@ const pillars: [string, string, string][] = [
 
 export function Statement() {
   return (
-    <section id="studio" style={{ position: 'relative', background: 'var(--surface-ink)', color: 'var(--text-on-dark)', overflow: 'hidden' }}>
+    <section id="studio" style={{ position: 'relative', background: 'var(--surface-ink)', color: 'var(--text-on-dark)', overflow: 'hidden', minHeight: '100svh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
       <Mark kind="sun" color="var(--pula-500)" size={380} style={{ position: 'absolute', top: '-90px', left: '-110px', opacity: 0.14 }} />
       <Mark kind="bituin" color="var(--bughaw-400)" size={200} style={{ position: 'absolute', bottom: '-40px', right: '-30px', opacity: 0.14 }} />
       <div className="ok-tile-binakol" style={{ position: 'absolute', inset: 0, '--mark-color': 'var(--buhangin-100)', opacity: 0.03 } as CSSProperties} />

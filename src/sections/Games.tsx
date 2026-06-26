@@ -1,8 +1,12 @@
 import type { CSSProperties } from 'react'
-import { Button, Badge, Icon, Band, Container, SectionHead, GameCover } from '../ui'
-import { games } from '../data/content'
+import { Link } from 'react-router-dom'
+import { Button, Icon, Band, Container, SectionHead, GameCard } from '../ui'
+import { useGames } from '../data/useGames'
 
 export function Games() {
+  const { games, loading } = useGames()
+  const featured = games.filter((g) => g.featured && g.published).slice(0, 3)
+
   return (
     <section id="games" style={{ position: 'relative', background: 'var(--surface)', overflow: 'hidden' }}>
       <div className="ok-tile-binakol" style={{ position: 'absolute', inset: 0, '--mark-color': 'var(--bughaw-500)', opacity: 0.03 } as CSSProperties} />
@@ -11,22 +15,22 @@ export function Games() {
       <Container style={{ position: 'relative', paddingTop: 96, paddingBottom: 96 }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap', marginBottom: 40 }}>
           <SectionHead kicker="Our games" title="Worlds woven by hand" />
-          <a href="#games" style={{ textDecoration: 'none' }}>
+          <Link to="/games" style={{ textDecoration: 'none' }}>
             <Button variant="ghost" iconRight={<Icon name="arrow-right" size={16} />}>See all titles</Button>
-          </a>
+          </Link>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 26 }}>
-          {games.map((g, i) => (
-            <div key={g.id}>
-              <GameCover game={g} height={340} interactive rotate={i === 1 ? 0 : i === 0 ? -1.2 : 1.2} />
-              <div style={{ display: 'flex', gap: 8, marginTop: 18, flexWrap: 'wrap', alignItems: 'center' }}>
-                <Badge tone={g.statusTone} variant="solid">{g.status}</Badge>
-                {g.genres.map((x) => <Badge key={x} tone="ink" variant="outline">{x}</Badge>)}
-              </div>
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--text-muted)' }}>Loading games…</p>
+        ) : (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 26 }}>
+            {featured.map((g, i) => {
+              const mid = (featured.length - 1) / 2
+              const tilt = Math.max(-3, Math.min(3, (i - mid) * 1.5))
+              return <GameCard key={g.slug} game={g} tilt={tilt} />
+            })}
+          </div>
+        )}
       </Container>
     </section>
   )

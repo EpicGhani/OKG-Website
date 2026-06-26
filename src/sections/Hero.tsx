@@ -3,13 +3,13 @@ import { Button, Container, Mark, Band, Icon, Eyebrow } from '../ui'
 
 export function Hero() {
   return (
-    <section id="home" style={{ position: 'relative', background: 'var(--bg)', overflow: 'hidden', paddingTop: 88 }}>
+    <section id="home" style={{ position: 'relative', background: 'var(--bg)', overflow: 'hidden', minHeight: '100svh', display: 'flex', flexDirection: 'column' }}>
       <div className="ok-paper-grain" style={{ position: 'absolute', inset: 0 }} />
       <Mark kind="sun" color="var(--pula-200)" size={460} style={{ position: 'absolute', top: '-130px', right: '-150px', opacity: 0.5 }} />
       <Mark kind="sun" color="var(--luntian-200)" size={240} style={{ position: 'absolute', bottom: '40px', left: '-90px', opacity: 0.4 }} />
       <div className="ok-tile-binakol" style={{ position: 'absolute', inset: 0, '--mark-color': 'var(--bughaw-500)', opacity: 0.03 } as CSSProperties} />
 
-      <Container style={{ position: 'relative', textAlign: 'center', paddingTop: 36, paddingBottom: 64, maxWidth: 1000 }}>
+      <Container style={{ position: 'relative', textAlign: 'center', maxWidth: 1000, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Eyebrow>Filipino game studio · Manila</Eyebrow>
         </div>

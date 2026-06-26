@@ -1,28 +1,4 @@
-import type { Game, Service, Engagement, Devlog } from './types'
-
-export const games: Game[] = [
-  {
-    id: 'anito', title: 'Anito', tagline: 'A folklore brawler from the islands.',
-    status: 'Now playing', statusTone: 'pula', year: '2025',
-    genres: ['Action', 'Folklore'],
-    pattern: 'ok-pattern-tnalak', band: 'kalinga',
-    coverFg: 'var(--pula-500)', coverBg: 'var(--buhangin-100)', coverInk: 'var(--itim-800)',
-  },
-  {
-    id: 'tabi-tabi', title: 'Tabi-Tabi', tagline: 'Wander the night, mind your manners.',
-    status: 'Coming 2027', statusTone: 'sand', year: '2027',
-    genres: ['Adventure', 'Cozy-eerie'],
-    pattern: 'ok-pattern-banig', band: 'gayaman',
-    coverFg: 'var(--luntian-500)', coverBg: 'var(--buhangin-200)', coverInk: 'var(--itim-800)',
-  },
-  {
-    id: 'palay', title: 'Palay', tagline: 'Build a barangay, season by season.',
-    status: 'Early access', statusTone: 'luntian', year: '2024',
-    genres: ['Builder', 'Cozy'],
-    pattern: 'ok-pattern-diamond', band: 'terrace',
-    coverFg: 'var(--bughaw-500)', coverBg: 'var(--buhangin-100)', coverInk: 'var(--itim-800)',
-  },
-]
+import type { Game, Service, Engagement } from './types'
 
 export const services: Service[] = [
   {
@@ -73,10 +49,4 @@ export const engagements: Engagement[] = [
     points: ['Funding & milestones', 'SEA-first localization', 'Marketing & launch', 'Community stewardship'],
     cta: 'Pitch your game', tone: 'luntian',
   },
-]
-
-export const devlog: Devlog[] = [
-  { n: '014', kicker: 'Tabi-Tabi po', title: 'Teaching spirits to knock', date: 'Jun 2026' },
-  { n: '013', kicker: 'Anito', title: 'Rebuilding the bolo, hit by hit', date: 'May 2026' },
-  { n: '012', kicker: 'Studio', title: 'Why we make games from home', date: 'Apr 2026' },
 ]

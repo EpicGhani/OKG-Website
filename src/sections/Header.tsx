@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
+import type { CSSProperties, MouseEvent } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { Button } from '../ui'
 import logoCream from '../assets/logo-cream.png'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('home')
+  const location = useLocation()
 
   useEffect(() => {
     const onScroll = () => {
@@ -23,10 +26,11 @@ export function Header() {
   }, [])
 
   const nav = [
-    { id: 'studio', label: 'Studio' },
-    { id: 'what-we-do', label: 'What we do' },
-    { id: 'games', label: 'Games' },
-    { id: 'work-with-us', label: 'Work with us' },
+    { id: 'studio', label: 'Studio', to: '/#studio' },
+    { id: 'what-we-do', label: 'What we do', to: '/#what-we-do' },
+    { id: 'games', label: 'Games', to: '/games' },
+    { id: 'devlog', label: 'Devlog', to: '/devlog' },
+    { id: 'work-with-us', label: 'Work with us', to: '/#work-with-us' },
   ]
 
   return (
@@ -41,31 +45,35 @@ export function Header() {
         maxWidth: 'var(--container)', margin: '0 auto', padding: '0 40px', height: '72px',
         display: 'flex', alignItems: 'center', gap: '28px', boxSizing: 'border-box',
       }}>
-        <a href="#home" style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer', textDecoration: 'none' }}>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer', textDecoration: 'none' }}>
           <img src={logoCream} alt="Obra Kasi" style={{ height: '40px', display: 'block', flexShrink: 0 }} />
           <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: '14px', letterSpacing: '0.06em', color: 'var(--buhangin-100)', textTransform: 'uppercase' }}>
             Obra Kasi Games
           </span>
-        </a>
+        </Link>
 
         <nav style={{ display: 'flex', gap: '2px', marginLeft: 'auto' }}>
-          {nav.map((n) => (
-            <a key={n.id} href={'#' + n.id} style={{
+          {nav.map((n) => {
+            const isRoute = !n.to.includes('#')
+            const isActive = isRoute ? location.pathname === n.to : location.pathname === '/' && active === n.id
+            const linkStyle: CSSProperties = {
               fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase',
-              fontWeight: active === n.id ? 700 : 500,
-              color: active === n.id ? 'var(--pula-300)' : 'var(--text-on-dark-muted)',
+              fontWeight: isActive ? 700 : 500,
+              color: isActive ? 'var(--pula-300)' : 'var(--text-on-dark-muted)',
               padding: '10px 14px', borderRadius: 'var(--radius-sm)', cursor: 'pointer',
               textDecoration: 'none', transition: 'color var(--dur-fast)',
-            }}
-              onMouseEnter={(e) => { if (active !== n.id) e.currentTarget.style.color = 'var(--buhangin-100)' }}
-              onMouseLeave={(e) => { if (active !== n.id) e.currentTarget.style.color = 'var(--text-on-dark-muted)' }}
-            >{n.label}</a>
-          ))}
+            }
+            const onEnter = (e: MouseEvent<HTMLAnchorElement>) => { if (!isActive) e.currentTarget.style.color = 'var(--buhangin-100)' }
+            const onLeave = (e: MouseEvent<HTMLAnchorElement>) => { if (!isActive) e.currentTarget.style.color = 'var(--text-on-dark-muted)' }
+            return (
+              <Link key={n.id} to={n.to} style={linkStyle} onMouseEnter={onEnter} onMouseLeave={onLeave}>{n.label}</Link>
+            )
+          })}
         </nav>
 
-        <a href="#work-with-us" style={{ textDecoration: 'none', flexShrink: 0 }}>
+        <Link to="/#work-with-us" style={{ textDecoration: 'none', flexShrink: 0 }}>
           <Button variant="stamp" size="sm">Contact</Button>
-        </a>
+        </Link>
       </div>
     </header>
   )

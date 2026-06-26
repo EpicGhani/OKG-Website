@@ -1,18 +1,27 @@
 export type Tone = 'pula' | 'luntian' | 'sand'
 
+export type DevlogAccent = 'pula' | 'luntian' | 'bughaw' | 'ink'
+
+export type GameLink = { label: string; url: string }
+
 export interface Game {
-  id: string
+  slug: string
   title: string
   tagline: string
+  description?: string
   status: string
-  statusTone: Tone
+  status_accent?: DevlogAccent
   year: string
   genres: string[]
-  pattern: string
-  band: string
-  coverFg: string
-  coverBg: string
-  coverInk: string
+  cover_image?: string
+  screenshots?: string[]
+  links?: GameLink[]
+  accent?: DevlogAccent
+  pattern?: string
+  featured?: boolean
+  published?: boolean
+  created_at?: string
+  updated_at?: string
 }
 
 export type FeaturePair = [string, string]
@@ -49,8 +58,16 @@ export interface Engagement {
 }
 
 export interface Devlog {
+  slug: string
   n: string
   kicker: string
   title: string
-  date: string
+  pattern?: string
+  accent?: DevlogAccent
+  body?: string
+  created_at?: string
+  updated_at?: string
+  status?: DevlogStatus
 }
+
+export type DevlogStatus = 'draft' | 'published'

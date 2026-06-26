@@ -1,8 +1,7 @@
-import { useState } from 'react'
 import type { CSSProperties, ReactNode } from 'react'
 import { icons } from 'lucide-react'
 import { Eyebrow } from './Eyebrow'
-import type { Game, ServiceArt } from '../data/types'
+import type { ServiceArt } from '../data/types'
 
 type Style = CSSProperties & Record<`--${string}`, string | number>
 
@@ -35,44 +34,6 @@ export function Icon({ name, size = 18, color = 'currentColor', strokeWidth = 2,
   const LucideIcon = icons[key as keyof typeof icons]
   if (!LucideIcon) return null
   return <LucideIcon size={size} color={color} strokeWidth={strokeWidth} style={style} />
-}
-
-interface GameCoverProps {
-  game: Game
-  height?: number
-  onClick?: () => void
-  interactive?: boolean
-  rotate?: number
-}
-export function GameCover({ game, height = 320, onClick, interactive, rotate = 0 }: GameCoverProps) {
-  const [hover, setHover] = useState(false)
-  return (
-    <div
-      onClick={onClick}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      style={{
-        position: 'relative', height, borderRadius: 'var(--radius-lg)', overflow: 'hidden',
-        background: game.coverBg, border: '1.5px solid var(--border)',
-        boxShadow: hover && interactive ? 'var(--shadow-lg)' : 'var(--shadow-md)',
-        transform: `rotate(${rotate}deg) translateY(${hover && interactive ? -6 : 0}px)`,
-        transition: 'transform var(--dur-slow) var(--ease-snap), box-shadow var(--dur-base) var(--ease-out)',
-        cursor: interactive ? 'pointer' : 'default', display: 'flex', flexDirection: 'column',
-      }}
-    >
-      <div className={game.pattern} style={{ position: 'absolute', inset: 0, '--pat-color': game.coverFg, '--pat-bg': game.coverBg, opacity: 0.4 } as Style} />
-      <div className="ok-tile-binakol" style={{ position: 'absolute', inset: 0, '--mark-color': game.coverFg, opacity: 0.06 } as Style} />
-      <Mark kind="sun" color={game.coverFg} size={66} style={{ position: 'absolute', top: 16, right: 16, opacity: 0.32 }} />
-      <div style={{ position: 'relative', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-        <span style={{ fontFamily: 'var(--font-display)', fontSize: height > 320 ? '58px' : '42px', color: game.coverInk, letterSpacing: '-0.02em', textAlign: 'center', lineHeight: 1 }}>{game.title}</span>
-      </div>
-      <Band kind={game.band || 'kalinga'} color={game.coverFg} height={20} style={{ position: 'relative', opacity: 0.85 }} />
-      <div style={{ position: 'relative', background: 'var(--itim-800)', color: 'var(--buhangin-100)', padding: '11px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.04em' }}>{game.tagline}</span>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--itim-300)' }}>{game.year}</span>
-      </div>
-    </div>
-  )
 }
 
 interface ArtFrameProps { art: ServiceArt; height?: number }
