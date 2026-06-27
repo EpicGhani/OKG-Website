@@ -50,7 +50,7 @@ export function GameDetailPage() {
             <Button variant="outline" size="sm" iconLeft={<Icon name="arrow-left" size={15} />}>All games</Button>
           </Link>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: 40, alignItems: 'center', marginTop: 24 }}>
+          <div className="stack-mobile" style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: 40, alignItems: 'center', marginTop: 24 }}>
             <div style={{ position: 'relative', aspectRatio: '3 / 4', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '2px solid var(--border-ink)', boxShadow: 'var(--shadow-stamp)', background: 'var(--buhangin-100)' }}>
               {game.cover_image ? (
                 <img src={game.cover_image} alt={game.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />

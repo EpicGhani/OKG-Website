@@ -23,7 +23,7 @@ export function Devlog() {
         {loading ? (
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--text-muted)' }}>Loading devlogs…</p>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 26 }}>
+          <div className="featured-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 26 }}>
             {latest.map((d) => (
               <DevlogCard key={d.slug} entry={d} accent={resolveAccent(d)} />
             ))}

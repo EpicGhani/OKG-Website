@@ -59,7 +59,7 @@ export function WorkWithUs() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, marginTop: 48 }}>
+        <div className="stack-mobile" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, marginTop: 48 }}>
           {engagements.map((item) => <EngageCard key={item.id} item={item} />)}
         </div>
 

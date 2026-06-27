@@ -3,11 +3,12 @@ import type { CSSProperties } from 'react'
 import { Button, Container, Icon, Mark, Band, resolveAccent, resolvePatternClass, RichText } from '../ui'
 import { useDevlog } from '../data/useDevlogs'
 import { formatDevlogDate, formatEdited, wasEdited } from '../data/formatDate'
-
+import { useSeo } from '../lib/useSeo'
 
 export function DevlogEntryPage() {
   const { slug } = useParams()
   const { devlog: entry, loading } = useDevlog(slug)
+  useSeo(entry ? `${entry.title} — Obra Kasi Devlog` : undefined, entry?.kicker)
 
   if (loading) {
     return (

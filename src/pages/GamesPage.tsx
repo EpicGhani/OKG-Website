@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
 import { Button, Container, Icon, Mark, Band, GameCard } from '../ui'
 import { useGames } from '../data/useGames'
+import { useSeo } from '../lib/useSeo'
+
 
 export function GamesPage() {
   const { games, loading } = useGames()
   const published = games.filter((g) => g.published)
+  useSeo('Games — Obra Kasi Games', 'Worlds woven by hand — every title from the bench.')
 
   return (
     <main>

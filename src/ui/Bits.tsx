@@ -12,7 +12,7 @@ interface ContainerProps {
 }
 export function Container({ children, style = {}, width = 'var(--container)' }: ContainerProps) {
   return (
-    <div style={{ maxWidth: width, margin: '0 auto', width: '100%', padding: '0 40px', boxSizing: 'border-box', ...style }}>
+    <div style={{ maxWidth: width, margin: '0 auto', width: '100%', padding: '0 clamp(20px, 5vw, 40px)', boxSizing: 'border-box', ...style }}>
       {children}
     </div>
   )

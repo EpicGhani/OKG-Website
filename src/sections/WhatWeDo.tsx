@@ -35,7 +35,7 @@ export function WhatWeDo() {
 
       {/* Phase one — text left, art right */}
       <Container style={{ position: 'relative', paddingTop: 40, paddingBottom: 56 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
+        <div className="stack-mobile" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
           <div>
             <PhaseTag tone="pula">{one.phase}</PhaseTag>
             <PhaseHeading>{one.title}</PhaseHeading>
@@ -63,13 +63,13 @@ export function WhatWeDo() {
 
       {/* Phase two — art left, text + grid right */}
       <Container style={{ position: 'relative', paddingTop: 40, paddingBottom: 72 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
+        <div className="stack-mobile" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
           {two.art && <ArtFrame art={two.art} height={400} />}
           <div>
             <PhaseTag tone="luntian">{two.phase}</PhaseTag>
             <PhaseHeading>{two.title}</PhaseHeading>
             <PhaseBody>{two.body}</PhaseBody>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 26 }}>
+            <div className="stack-mobile" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 26 }}>
               {two.grid?.map(([h, b]) => (
                 <div key={h} style={{ borderLeft: '2.5px solid var(--secondary)', padding: '6px 0 6px 16px' }}>
                   <p style={{ margin: 0, fontWeight: 700, fontSize: 15.5, color: 'var(--text)' }}>{h}</p>
@@ -98,7 +98,7 @@ export function WhatWeDo() {
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(30px, 4vw, 46px)', letterSpacing: '-0.02em', color: 'var(--buhangin-100)', margin: '16px 0 0' }}>{three.title}</h3>
             <p style={{ fontSize: 17.5, lineHeight: 1.6, color: 'var(--luntian-100)', maxWidth: '60ch', margin: '18px auto 0', fontWeight: 300 }}>{three.body}</p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32, margin: '44px auto 0', maxWidth: 820, textAlign: 'left' }}>
+            <div className="stack-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32, margin: '44px auto 0', maxWidth: 820, textAlign: 'left' }}>
               {three.cols?.map(([h, b]) => (
                 <div key={h} style={{ borderTop: '2px solid var(--buhangin-400)', paddingTop: 16 }}>
                   <p style={{ margin: 0, fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--buhangin-300)' }}>{h}</p>

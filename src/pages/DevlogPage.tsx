@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
 import { Button, Container, Icon, Mark, Band, DevlogCard, resolveAccent } from '../ui'
 import { useDevlogs } from '../data/useDevlogs'
+import { useSeo } from '../lib/useSeo'
+
 
 export function DevlogPage() {
   const { devlogs, loading } = useDevlogs()
+  useSeo('Devlog — Obra Kasi Games', 'Notes from the workbench — what we are building, breaking, and learning.')
+
 
   return (
     <main>
@@ -27,7 +31,7 @@ export function DevlogPage() {
           {loading ? (
             <p style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--text-muted)' }}>Loading devlogs…</p>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 26 }}>
+            <div className="cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 26 }}>
               {devlogs.filter((d) => d.status === 'published').map((d) => (
                 <DevlogCard key={d.slug} entry={d} accent={resolveAccent(d)} />
               ))}

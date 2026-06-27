@@ -32,7 +32,7 @@ export function Statement() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, marginTop: 64, borderTop: '1.5px solid var(--itim-600)' }}>
+        <div className="stack-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, marginTop: 64, borderTop: '1.5px solid var(--itim-600)' }}>
           {pillars.map(([tl, en, body], i) => (
             <div key={tl} style={{ padding: '34px 28px', borderLeft: i === 0 ? 'none' : '1.5px solid var(--itim-600)' }}>
               <p style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 24, color: 'var(--buhangin-100)', letterSpacing: '-0.01em' }}>{tl}</p>
