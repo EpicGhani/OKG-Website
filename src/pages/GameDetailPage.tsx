@@ -2,10 +2,12 @@ import { Link, useParams } from 'react-router-dom'
 import type { CSSProperties } from 'react'
 import { Button, Container, Icon, Mark, Band, Badge, RichText, accentFor, patternClassFor } from '../ui'
 import { useGame } from '../data/useGames'
+import { useSeo } from '../lib/useSeo'
 
 export function GameDetailPage() {
   const { slug } = useParams()
   const { game, loading } = useGame(slug)
+  useSeo(game ? `${game.title} — Obra Kasi Games` : undefined, game?.tagline)
 
   if (loading) {
     return (

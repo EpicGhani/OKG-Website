@@ -2,7 +2,7 @@ import { supabase } from '../lib/supabase'
 
 export type MediaFile = { name: string; path: string; url: string; folder: string }
 
-export const MEDIA_FOLDERS = ['devlog', 'games'] as const
+export const MEDIA_FOLDERS = ['devlog', 'games', 'articles'] as const
 
 export async function listMedia(folders: readonly string[] = MEDIA_FOLDERS): Promise<{ files: MediaFile[]; error: string | null }> {
   const all: MediaFile[] = []

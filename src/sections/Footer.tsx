@@ -6,6 +6,7 @@ const studio = [
   { label: 'Our story', to: '/#studio' },
   { label: 'Games', to: '/games' },
   { label: 'Devlog', to: '/devlog' },
+  { label: 'Articles', to: '/articles' },
   { label: 'Contact', to: '/#work-with-us' },
 ]
 const community = ['Discord', 'Steam', 'Itch.io', 'YouTube']

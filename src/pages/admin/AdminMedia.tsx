@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { useDevlogs } from '../../data/useDevlogs'
 import { useGames } from '../../data/useGames'
+import { useArticles } from '../../data/useArticles'
 import { listMedia, deleteMedia, MEDIA_FOLDERS } from '../../data/media'
 import type { MediaFile } from '../../data/media'
 
@@ -18,6 +19,7 @@ const chip = (active: boolean): CSSProperties => ({
 export function AdminMedia() {
   const { devlogs } = useDevlogs()
   const { games } = useGames()
+  const { articles } = useArticles()
   const [files, setFiles] = useState<MediaFile[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -42,8 +44,11 @@ export function AdminMedia() {
     games.forEach((g) => {
       if ((g.description ?? '').includes(url) || g.cover_image === url || (g.screenshots ?? []).includes(url)) names.push(g.title)
     })
+    articles.forEach((a) => {
+      if ((a.body ?? '').includes(url) || a.cover_image === url) names.push(a.title)
+    })
     return names
-  }, [devlogs, games])
+  }, [devlogs, games, articles])
 
   const handleDelete = async (file: MediaFile) => {
     const used = usageFor(file.url)

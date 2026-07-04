@@ -139,7 +139,7 @@ export function GameForm({
             <input value={tagline} onChange={(e) => setTagline(e.target.value)} placeholder="A folklore brawler from the islands." style={field} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 16 }}>
+          <div className='stack-mobile' style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 16 }}>
             <div>
               <label style={labelStyle}>Status label</label>
               <input value={status} onChange={(e) => setStatus(e.target.value)} placeholder="Now playing" style={field} />
@@ -159,7 +159,7 @@ export function GameForm({
             <input value={genresText} onChange={(e) => setGenresText(e.target.value)} placeholder="Action, Folklore" style={field} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 16 }}>
+          <div className='stack-mobile' style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 16 }}>
             <div>
               <label style={labelStyle}>Card accent</label>
               <AccentDots value={accent} onChange={setAccent} />

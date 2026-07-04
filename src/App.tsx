@@ -13,9 +13,14 @@ import { Login } from './pages/admin/Login'
 import { RequireAuth } from './pages/admin/RequireAuth'
 import { GamesPage } from './pages/GamesPage'
 import { GameDetailPage } from './pages/GameDetailPage'
+import { ArticlesPage } from './pages/ArticlesPage'
+import { ArticleDetailPage } from './pages/ArticleDetailPage'
 import { AdminGames } from './pages/admin/AdminGames'
 import { NewGame } from './pages/admin/NewGame'
 import { EditGame } from './pages/admin/EditGame'
+import { AdminArticles } from './pages/admin/AdminArticles'
+import { NewArticle } from './pages/admin/NewArticle'
+import { EditArticle } from './pages/admin/EditArticle'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +31,8 @@ const router = createBrowserRouter(
         <Route path="/devlog/:slug" element={<DevlogEntryPage />} />
         <Route path="/games" element={<GamesPage />} />
         <Route path="/games/:slug" element={<GameDetailPage />} />
+        <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/articles/:slug" element={<ArticleDetailPage />} />
       </Route>
 
       <Route path="/admin/login" element={<Login />} />
@@ -45,6 +52,9 @@ const router = createBrowserRouter(
         <Route path="games" element={<AdminGames />} />
         <Route path="games/new" element={<NewGame />} />
         <Route path="games/:slug/edit" element={<EditGame />} />
+        <Route path="articles" element={<AdminArticles />} />
+        <Route path="articles/new" element={<NewArticle />} />
+        <Route path="articles/:slug/edit" element={<EditArticle />} />
       </Route>
     </>,
   ),

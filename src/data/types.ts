@@ -70,4 +70,19 @@ export interface Devlog {
   status?: DevlogStatus
 }
 
+export interface Article {
+  slug: string
+  title: string
+  excerpt: string
+  author: string
+  cover_image?: string
+  body?: string
+  tags: string[]
+  accent?: DevlogAccent
+  pattern?: string
+  published?: boolean
+  created_at?: string
+  updated_at?: string
+}
+
 export type DevlogStatus = 'draft' | 'published'

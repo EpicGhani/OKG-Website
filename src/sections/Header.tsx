@@ -7,8 +7,9 @@ import logoCream from '../assets/logo-cream.png'
 const nav = [
   { id: 'studio', label: 'Studio', to: '/#studio' },
   { id: 'what-we-do', label: 'What we do', to: '/#what-we-do' },
-  { id: 'games', label: 'Games', to: '/#games' },
+  { id: 'games', label: 'Games', to: '/games' },
   { id: 'devlog', label: 'Devlog', to: '/devlog' },
+    { id: 'articles', label: 'Articles', to: '/articles' },
   { id: 'work-with-us', label: 'Work with us', to: '/#work-with-us' },
 ]
 

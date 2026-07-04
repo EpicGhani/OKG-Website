@@ -3,6 +3,7 @@ import { Statement } from '../sections/Statement'
 import { WhatWeDo } from '../sections/WhatWeDo'
 import { Games } from '../sections/Games'
 import { Devlog } from '../sections/Devlog'
+import { Articles } from '../sections/Articles'
 import { WorkWithUs } from '../sections/WorkWithUs'
 import { useSeo } from '../lib/useSeo' 
 
@@ -16,6 +17,7 @@ export function Home() {
       <Statement />
       <WhatWeDo />
       <Games />
+      <Articles />
       <Devlog />
       <WorkWithUs />
     </main>

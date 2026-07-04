@@ -125,7 +125,7 @@ export function DevlogForm({
       <div className="devlog-editor-grid">
         {/* LEFT — fields + actions */}
         <div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className='stack-mobile' style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
             <div>
               <label style={labelStyle}>Number (auto)</label>
               <input value={n} readOnly style={{ ...field, background: 'var(--surface)', color: 'var(--text-muted)' }} />
