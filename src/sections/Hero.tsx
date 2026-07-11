@@ -18,17 +18,17 @@ export function Hero() {
           fontFamily: 'var(--font-display)', fontSize: 'clamp(54px, 9vw, 116px)', lineHeight: 0.94,
           letterSpacing: '-0.03em', color: 'var(--primary)', margin: '22px 0 0', textWrap: 'balance',
         }}>
-          Laro nang malaya.
+          Games made with love.
         </h1>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, margin: '22px 0 0' }}>
           <Band kind="okir" color="var(--pula-500)" height={18} style={{ width: 90, opacity: 0.7 }} />
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Play freely</span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Obra Kasi</span>
           <Band kind="okir" color="var(--pula-500)" height={18} style={{ width: 90, opacity: 0.7 }} />
         </div>
 
-        <p style={{ fontSize: 'clamp(18px, 2.1vw, 22px)', lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: '50ch', margin: '26px auto 0', fontWeight: 300 }}>
-          We make rooted games from the islands. Folklore, pattern, and play, all generated close to home and built to travel the world.
+        <p style={{ fontSize: 'clamp(18px, 2.1vw, 22px)', lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: '60ch', margin: '26px auto 0', fontWeight: 300 }}>
+          The fire burns bright but the candle is melting. Professionals with integrity but always working for the vision of another. This time, we will chart our own path, a path that leads back home.
         </p>
 
         <div style={{ display: 'flex', gap: 14, marginTop: 34, flexWrap: 'wrap', justifyContent: 'center' }}>

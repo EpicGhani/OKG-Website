@@ -27,9 +27,9 @@ export function WhatWeDo() {
       <div className="ok-tile-binakol" style={{ position: 'absolute', inset: 0, '--mark-color': 'var(--pula-500)', opacity: 0.025 } as CSSProperties} />
 
       <Container style={{ position: 'relative', paddingTop: 96, paddingBottom: 48, textAlign: 'center' }}>
-        <SectionHead kicker="What we do" title="Digital weaving services" align="center" max={760} />
-        <p style={{ fontSize: 18, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: '56ch', margin: '20px auto 0', fontWeight: 300 }}>
-          We intertwine ancestral Filipino narrative with modern game technology. We do not just write code, we weave interactive legacies, from first idea to global launch.
+        <SectionHead kicker="What we do" title="We make games" align="center" max={760} />
+        <p style={{ fontSize: 18, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: '76ch', margin: '20px auto 0', fontWeight: 300 }}>
+          Selfishly and with passion. Not afraid to admit it, too tired to deny it. We still have our dayjobs, we still have to make games for hire. So if you want to help us bring our vision to life because you think you might like what we do, then we welcome you to the bonfire. We’ll do whatever it takes to be successful on our own if we need to, but helpful hands and potential friends are welcome along the way.
         </p>
       </Container>
 

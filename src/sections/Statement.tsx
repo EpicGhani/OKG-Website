@@ -2,9 +2,8 @@ import type { CSSProperties } from 'react'
 import { Container, Mark, Band, Eyebrow } from '../ui'
 
 const pillars: [string, string, string][] = [
-  ['Laro nang malaya', 'Play freely', 'Creative freedom over formula. We chase the game that only we could make.'],
-  ['Bayanihan', 'Built together', 'Cooperative craft, from the design bench to the community we build with.'],
-  ['Tabi-tabi po', 'With respect', 'We borrow from tradition with care, and check our work with the people who hold it.'],
+  ['Obra', 'Creation or Masterpiece', 'Aspiration needs execution. There is a fine line between arrogance and ambition. That line is drawn by the people who put their money where their mouth is. We learn, we earn, and we play the game of the industry. And while we have the time and energy, we will continue this tiring but important journey.'],
+  ['Kasi', 'Love and Care', 'It’s cheesy, we know, but it is our honest dream. We’ve been making games for others for so long, professionally and with integrity. But now we want to make games that we think are awesome and cool. Not just because we need to, as part of our job. But because we want to, as creatives and as lifelong gamers.']
 ]
 
 export function Statement() {
@@ -32,7 +31,7 @@ export function Statement() {
           </p>
         </div>
 
-        <div className="stack-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, marginTop: 64, borderTop: '1.5px solid var(--itim-600)' }}>
+        <div className="stack-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, marginTop: 64, borderTop: '1.5px solid var(--itim-600)' }}>
           {pillars.map(([tl, en, body], i) => (
             <div key={tl} style={{ padding: '34px 28px', borderLeft: i === 0 ? 'none' : '1.5px solid var(--itim-600)' }}>
               <p style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 24, color: 'var(--buhangin-100)', letterSpacing: '-0.01em' }}>{tl}</p>
