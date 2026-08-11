@@ -14,9 +14,9 @@ export function Devlog() {
 
       <Container style={{ position: 'relative', paddingTop: 96, paddingBottom: 96 }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap', marginBottom: 40 }}>
-          <SectionHead kicker="Devlog" title="From the workbench" />
+          <SectionHead kicker="**Devlog" title="**From the workbench" />
           <Link to="/devlog" style={{ textDecoration: 'none' }}>
-            <Button variant="ghost" iconRight={<Icon name="arrow-right" size={16} />}>Read all devlogs</Button>
+            <Button variant="ghost" iconRight={<Icon name="arrow-right" size={16} />}>**Read all devlogs</Button>
           </Link>
         </div>
 

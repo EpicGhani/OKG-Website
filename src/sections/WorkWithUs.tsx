@@ -49,13 +49,13 @@ export function WorkWithUs() {
       <Container style={{ position: 'relative', paddingTop: 96, paddingBottom: 96 }}>
         <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Eyebrow>Work with us</Eyebrow>
+            <Eyebrow>**Work with us</Eyebrow>
           </div>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 4.2vw, 50px)', lineHeight: 1.04, letterSpacing: '-0.02em', color: 'var(--text)', margin: '14px 0 0' }}>
-            Come build with us
+            **Come build with us
           </h2>
           <p style={{ fontSize: 18, lineHeight: 1.6, color: 'var(--text-muted)', margin: '18px auto 0', maxWidth: '52ch', fontWeight: 300 }}>
-            Two ways in. Hire the bench for development, or bring us your game and let us help it reach the islands and beyond.
+            **Two ways in. Hire the bench for development, or bring us your game and let us help it reach the islands and beyond.
           </p>
         </div>
 
@@ -71,11 +71,11 @@ export function WorkWithUs() {
         }}>
           <Band kind="okir" color="var(--pula-400)" height={20} style={{ position: 'absolute', left: 0, right: 0, bottom: 0, opacity: 0.5 }} />
           <div>
-            <p style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 24, color: 'var(--buhangin-100)' }}>Have something honest in the works?</p>
-            <p style={{ margin: '6px 0 0', fontSize: 15, color: 'var(--text-on-dark-muted)', fontWeight: 300 }}>Tell us about it. We read every note, tabi-tabi po.</p>
+            <p style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 24, color: 'var(--buhangin-100)' }}>**Have something honest in the works?</p>
+            <p style={{ margin: '6px 0 0', fontSize: 15, color: 'var(--text-on-dark-muted)', fontWeight: 300 }}>**Tell us about it. We read every note, tabi-tabi po.</p>
           </div>
           <a href="mailto:hello@obrakasi.ph" style={{ textDecoration: 'none' }}>
-            <Button variant="stamp" size="lg" iconRight={<Icon name="arrow-up-right" size={17} />}>hello@obrakasi.ph</Button>
+            <Button variant="stamp" size="lg" iconRight={<Icon name="arrow-up-right" size={17} />}>**hello@obrakasi.ph</Button>
           </a>
         </div>
       </Container>

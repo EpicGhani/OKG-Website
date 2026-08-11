@@ -22,12 +22,12 @@ export function Statement() {
             fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 4.2vw, 52px)', lineHeight: 1.18,
             letterSpacing: '-0.015em', color: 'var(--buhangin-100)', margin: '26px 0 0', textWrap: 'balance',
           }}>
-            We make games from where we stand. Stories, patterns, and play drawn from{' '}
+            **We make games from where we stand. Stories, patterns, and play drawn from{' '}
             <span style={{ color: 'var(--pula-300)' }}>Filipino soil</span>, told with the care of{' '}
             <span style={{ color: 'var(--bughaw-300)' }}>handmade craft</span>.
           </p>
           <p style={{ fontSize: 19, lineHeight: 1.65, color: 'var(--text-on-dark-muted)', maxWidth: '60ch', margin: '28px auto 0', fontWeight: 300 }}>
-            Obra Kasi means the work of the home. We are a studio built on creative freedom and rooted inspiration, turning local legend into worlds you can wander, fight through, and call your own.
+            **Obra Kasi means the work of the home. We are a studio built on creative freedom and rooted inspiration, turning local legend into worlds you can wander, fight through, and call your own.
           </p>
         </div>
 

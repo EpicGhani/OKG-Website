@@ -43,8 +43,6 @@ export function Hero() {
         <div style={{ display: 'flex', gap: 22, marginTop: 40, alignItems: 'center', justifyContent: 'center', color: 'var(--text-faint)', fontFamily: 'var(--font-mono)', fontSize: 12, flexWrap: 'wrap' }}>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}><Mark kind="sun" color="var(--text-faint)" size={13} /> 3 titles in the works</span>
           <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--text-faint)' }} />
-          <span>40k+ wishlists</span>
-          <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--text-faint)' }} />
           <span>Rooted in Manila</span>
         </div>
       </Container>

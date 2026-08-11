@@ -11,9 +11,9 @@ export function Articles() {
       <div className="ok-paper-grain" style={{ position: 'absolute', inset: 0 }} />
       <Container style={{ position: 'relative', paddingTop: 96, paddingBottom: 96 }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap', marginBottom: 40 }}>
-          <SectionHead kicker="Reading" title="Words from the bench" />
+          <SectionHead kicker="**Reading" title="**Words from the bench" />
           <Link to="/articles" style={{ textDecoration: 'none' }}>
-            <Button variant="ghost" iconRight={<Icon name="arrow-right" size={16} />}>Read all articles</Button>
+            <Button variant="ghost" iconRight={<Icon name="arrow-right" size={16} />}>**Read all articles</Button>
           </Link>
         </div>
 

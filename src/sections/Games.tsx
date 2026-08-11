@@ -16,9 +16,9 @@ export function Games() {
 
       <Container style={{ position: 'relative', paddingTop: 96, paddingBottom: 96 }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap', marginBottom: 40 }}>
-          <SectionHead kicker="Our games" title="Worlds woven by hand" />
+          <SectionHead kicker="**Our games" title="**Worlds woven by hand" />
           <Link to="/games" style={{ textDecoration: 'none' }}>
-            <Button variant="ghost" iconRight={<Icon name="arrow-right" size={16} />}>See all titles</Button>
+            <Button variant="ghost" iconRight={<Icon name="arrow-right" size={16} />}>**See all titles</Button>
           </Link>
         </div>
 
