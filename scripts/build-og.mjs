@@ -1,32 +1,47 @@
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { readFile, writeFile, mkdir } from 'node:fs/promises'
+import sharp from 'sharp'
 
-mkdirSync(resolve('exports'), { recursive: true })
-const logoHref = `data:image/png;base64,${readFileSync(resolve('src/assets/logo-cream.png')).toString('base64')}`
-const rays = [0, 45, 90, 135, 180, 225, 270, 315].map((a) => `<polygon points="-6,-28 6,-28 0,-48" transform="rotate(${a})"/>`).join('')
-
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+// Repo-native SVG composition of existing artwork; no remote font dependency.
+const embed = async (file, mime) => `data:${mime};base64,${(await readFile(file)).toString('base64')}`
+const logo = await embed('src/assets/logo-cream.png', 'image/png')
+// librsvg does not decode embedded WebP on every platform; embed lossless PNG.
+const embedArtwork = async file => `data:image/png;base64,${(await sharp(file).png().toBuffer()).toString('base64')}`
+const monster = await embedArtwork('public/images/hero/monster-girl-site01.webp')
+const bintu = await embedArtwork('public/images/hero/veridian-site02.webp')
+const hearthleaf = await embedArtwork('public/images/hero/hearthleaf-background.webp')
+const hearthleafLogo = await embedArtwork('public/images/hero/hearthleaf-foreground.webp')
+const motif = (await readFile('exports/motifs/svg/pattern-diamond.svg', 'utf8')).replaceAll('#000000', '#fcf1d9')
+const pattern = `data:image/svg+xml;base64,${Buffer.from(motif).toString('base64')}`
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
 <defs>
-<style>@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesque:wght@300;600&amp;family=Space+Mono:wght@400;700&amp;family=Young+Serif&amp;display=swap');</style>
-<clipPath id="card"><rect x="140" y="95" width="920" height="440" rx="22"/></clipPath>
+<clipPath id="hearthleaf-panel"><rect x="70" y="149" width="330" height="381" rx="27"/></clipPath>
+<pattern id="weave" width="200" height="200" patternUnits="userSpaceOnUse"><image href="${pattern}" width="200" height="200"/></pattern>
+<linearGradient id="leaf" x2="0" y2="1"><stop stop-color="#668e68"/><stop offset="1" stop-color="#25112f"/></linearGradient>
+<linearGradient id="monster" x2="0" y2="1"><stop stop-color="#bb303d"/><stop offset="1" stop-color="#260c31"/></linearGradient>
+<linearGradient id="veridian" x2="0" y2="1"><stop stop-color="#88a7f7"/><stop offset="1" stop-color="#251139"/></linearGradient>
 </defs>
-<rect width="1200" height="630" fill="#fcf1d9"/>
-<g transform="translate(1112 84) scale(1.8)" fill="#e69a9a" opacity="0.5"><circle r="24"/>${rays}</g>
-<g transform="translate(96 566) scale(1.15)" fill="#a3c2b1" opacity="0.55"><circle r="24"/>${rays}</g>
-<rect x="154" y="109" width="920" height="440" rx="22" fill="#1a1a1a"/>
-<rect x="140" y="95" width="920" height="440" rx="22" fill="#fffdf7" stroke="#1a1a1a" stroke-width="3"/>
-<g clip-path="url(#card)"><rect x="140" y="95" width="920" height="92" fill="#141312"/><rect x="140" y="185" width="920" height="4" fill="#8b0000"/></g>
-<image href="${logoHref}" x="446" y="113" width="60" height="56" preserveAspectRatio="xMidYMid meet"/>
-<text x="516" y="150" font-family="'Space Mono', monospace" font-size="22" font-weight="700" letter-spacing="3" fill="#fcf1d9">OBRA KASI GAMES</text>
-<text x="600" y="292" text-anchor="middle" font-family="'Young Serif', Georgia, serif" font-size="76" fill="#1a1a1a" letter-spacing="-1">Laro nang malaya.</text>
-<path d="M486,332 L500,322 L514,332 L528,322 L542,332 L556,322 L570,332 L584,322 L598,332 L612,322 L626,332 L640,322 L654,332 L668,322 L682,332 L696,322 L710,332 L714,329" fill="none" stroke="#8b0000" stroke-width="3" opacity="0.7"/>
-<text x="600" y="378" text-anchor="middle" font-family="'Hanken Grotesque', system-ui, sans-serif" font-size="22" font-weight="300" fill="#5e574e">Rooted games from the islands \u2014 a Filipino studio in Manila.</text>
-<rect x="470" y="415" width="260" height="58" rx="12" fill="#8b0000"/>
-<rect x="466" y="411" width="260" height="58" rx="12" fill="#1a1a1a"/>
-<text x="596" y="448" text-anchor="middle" font-family="'Hanken Grotesque', system-ui, sans-serif" font-size="21" font-weight="600" fill="#fcf1d9">See the games \u2192</text>
-<text x="600" y="512" text-anchor="middle" font-family="'Space Mono', monospace" font-size="16" font-weight="700" letter-spacing="4" fill="#8b0000">OBRAKASIGAMES.COM</text>
-</svg>
-`
-
-writeFileSync(resolve('exports/og-image.svg'), svg)
-console.log('✅ Wrote exports/og-image.svg (logo embedded) — open it, export a 1200×630 PNG.')
+<rect width="1200" height="630" fill="#1a1a1a"/>
+<rect width="1200" height="630" fill="url(#weave)" opacity=".045"/>
+<image href="${logo}" x="52" y="27" width="65" height="61"/>
+<text x="135" y="65" font-family="Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="3" fill="#fcf1d9">OBRA KASI GAMES</text>
+<text x="1148" y="62" text-anchor="end" font-family="Arial, sans-serif" font-size="19" fill="#b9b5ad">A Filipino game studio</text>
+<rect x="70" y="149" width="330" height="381" rx="27" fill="url(#leaf)"/>
+<image href="${hearthleaf}" x="70" y="149" width="330" height="381" preserveAspectRatio="xMidYMax slice" clip-path="url(#hearthleaf-panel)"/>
+<rect x="435" y="149" width="330" height="381" rx="27" fill="url(#monster)"/>
+<rect x="800" y="149" width="330" height="381" rx="27" fill="url(#veridian)"/>
+<image href="${hearthleafLogo}" x="50" y="153" width="370" height="197" preserveAspectRatio="xMidYMid meet"/>
+<image href="${monster}" x="460" y="118" width="280" height="385" preserveAspectRatio="xMidYMin meet"/>
+<image href="${bintu}" x="778" y="112" width="374" height="330" preserveAspectRatio="xMidYMin meet"/>
+<rect x="448" y="407" width="304" height="90" rx="12" fill="#260c31" fill-opacity=".90"/>
+<text x="600" y="444" text-anchor="middle" font-family="Arial, sans-serif" font-size="31" font-weight="900" fill="#8df2e5">MONSTER GIRL</text>
+<text x="600" y="478" text-anchor="middle" font-family="Arial, sans-serif" font-size="31" font-weight="900" fill="#8df2e5">TACTICS</text>
+<text x="965" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" letter-spacing="5" fill="#fcf1d9">STEPS TO</text>
+<text x="965" y="493" text-anchor="middle" font-family="Georgia, serif" font-size="45" font-weight="700" fill="#bfdca1">Veridian</text>
+<path d="M70 559H1130" stroke="#fcf1d9" stroke-opacity=".2"/>
+<text x="70" y="600" font-family="Arial, sans-serif" font-size="20" fill="#fcf1d9">Games. Art. Stories from the studio.</text>
+<text x="1130" y="600" text-anchor="end" font-family="Arial, sans-serif" font-size="20" fill="#fcf1d9">obrakasigames.com</text>
+</svg>`
+await mkdir('exports', { recursive: true })
+await writeFile('exports/og-home-2026.svg', svg)
+const info = await sharp(Buffer.from(svg)).jpeg({quality:85, mozjpeg:true}).toFile('public/og-home-2026.jpg')
+console.log(`Social image: ${info.width} × ${info.height}, ${(info.size / 1024).toFixed(1)} KiB`)
