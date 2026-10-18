@@ -1,0 +1,42 @@
+[
+  {
+    "source": "site01.png",
+    "output": "monster-girl-site01.webp",
+    "width": 1000,
+    "height": 1380,
+    "originalBytes": 248838,
+    "bytes": 222010,
+    "lossless": true,
+    "variant": false
+  },
+  {
+    "source": "site01.png",
+    "output": "monster-girl-site01-small.webp",
+    "width": 480,
+    "height": 662,
+    "originalBytes": 248838,
+    "bytes": 99926,
+    "lossless": true,
+    "variant": true
+  },
+  {
+    "source": "site02.png",
+    "output": "veridian-site02.webp",
+    "width": 1000,
+    "height": 1043,
+    "originalBytes": 1971888,
+    "bytes": 141466,
+    "lossless": false,
+    "variant": false
+  },
+  {
+    "source": "site02.png",
+    "output": "veridian-site02-small.webp",
+    "width": 480,
+    "height": 501,
+    "originalBytes": 1971888,
+    "bytes": 55930,
+    "lossless": false,
+    "variant": true
+  }
+]

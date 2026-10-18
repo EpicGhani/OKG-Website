@@ -102,8 +102,22 @@
   top: -7%;
   pointer-events: none;
 }
-.game-banner__foreground > img { width: 100%; height: 100%; display: block; object-fit: contain; }
-.game-banner--has-art .game-banner__foreground > img { object-position: center top; }
+.game-banner__foreground picture, .game-banner__panel picture { display: block; width: 100%; height: 100%; }
+.game-banner__foreground img { width: 100%; height: 100%; display: block; object-fit: contain; }
+.game-banner--has-art .game-banner__foreground img { object-position: center top; }
+.game-banner--pixel-art img { image-rendering: pixelated; }
+.game-banner--logo.game-banner--has-art .game-banner__foreground { top: 4%; left: -6%; width: 112%; height: 38%; }
+.game-banner--hearthleaf.game-banner--has-art .game-banner__panel { box-shadow: inset 0 0 0 4px var(--banner-accent); }
+.game-banner--hearthleaf.game-banner--has-art .game-banner__background { height: 90%; object-position: center bottom; }
+.game-banner--hearthleaf.game-banner--has-art .game-banner__shade { background: linear-gradient(0deg, var(--banner-bottom) 7%, transparent 25%); }
+.game-banner--loading { background: #ffffff09; }
+.game-banner--default.game-banner--has-art .game-banner__wordmark { top: auto; bottom: 16%; text-shadow: 0 2px 12px var(--banner-bottom); }
+@media (min-width: 701px) {
+  .game-hero__banners[data-count="1"] { max-width: 390px; grid-template-columns: minmax(0, 1fr); }
+  .game-hero__banners[data-count="2"] { max-width: 800px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.game-hero__message { text-align: center; font-size: 18px; }
+.game-hero__message button { padding: 12px 24px; border-radius: var(--radius-md); border: 1px solid var(--buhangin-100); background: transparent; color: inherit; cursor: pointer; font: inherit; }
 .game-banner--monster-girl.game-banner--has-art .game-banner__foreground { height: 96%; }
 .game-banner--veridian.game-banner--has-art .game-banner__wordmark { bottom: 16%; text-shadow: 0 2px 12px var(--banner-bottom); }
 .game-banner--monster-girl.game-banner--has-art .game-banner__wordmark { top: auto; bottom: 14%; }

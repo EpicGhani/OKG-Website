@@ -4,7 +4,7 @@ import { deleteGame } from '../../data/gameMutations'
 import { accentFor, Button } from '../../ui'
 
 export function AdminGames() {
-  const { games, loading, refetch } = useGames()
+  const { games, loading, error, refetch } = useGames()
 
   const handleDelete = async (slug: string, title: string) => {
     if (!window.confirm(`Delete "${title}"? This cannot be undone.`)) return
@@ -22,6 +22,7 @@ export function AdminGames() {
         </Link>
       </div>
 
+      {error && <p role="alert">Unable to load games. If the banner update was just installed, apply its database migration first. <button onClick={refetch}>Try again</button></p>}
       {loading ? (
         <p style={{ marginTop: 28, fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--text-muted)' }}>Loading…</p>
       ) : (
@@ -38,6 +39,7 @@ export function AdminGames() {
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <p style={{ margin: 0, fontWeight: 700, fontSize: 15, color: 'var(--text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                     {g.title}
+                    {g.featured && <span style={{marginLeft:8,fontSize:11,color:'var(--primary)'}}>Homepage · {g.hero_order ?? 100}</span>}
                     {!g.published && <span style={{ marginLeft: 8, fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', border: '1px solid var(--border)', borderRadius: 4, padding: '1px 6px' }}>Draft</span>}
                   </p>
                   <p style={{ margin: '2px 0 0', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' }}>{g.status}{g.status && g.year ? ' · ' : ''}{g.year}</p>

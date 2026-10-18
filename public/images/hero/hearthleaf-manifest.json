@@ -1,0 +1,34 @@
+[
+  {
+    "source": "BG.png",
+    "output": "public/images/hero/hearthleaf-background.webp",
+    "width": 768,
+    "height": 1056,
+    "bytes": 18428,
+    "sourceBytes": 365532
+  },
+  {
+    "source": "BG.png",
+    "output": "public/images/hero/hearthleaf-background-small.webp",
+    "width": 384,
+    "height": 528,
+    "bytes": 17544,
+    "sourceBytes": 365532
+  },
+  {
+    "source": "Logo(512).png",
+    "output": "public/images/hero/hearthleaf-foreground.webp",
+    "width": 512,
+    "height": 272,
+    "bytes": 1120,
+    "sourceBytes": 3095
+  },
+  {
+    "source": "GameBanner.png",
+    "output": "public/images/hero/hearthleaf-cover.webp",
+    "width": 768,
+    "height": 1056,
+    "bytes": 19038,
+    "sourceBytes": 339671
+  }
+]

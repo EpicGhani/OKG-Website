@@ -3,10 +3,11 @@ import type { CSSProperties } from 'react'
 import { Button, Container, Icon, Mark, Band, Badge, RichText, accentFor, patternClassFor } from '../ui'
 import { useGame } from '../data/useGames'
 import { useSeo } from '../lib/useSeo'
+import { GameComingSoonPage } from './GameComingSoonPage'
 
 export function GameDetailPage() {
   const { slug } = useParams()
-  const { game, loading } = useGame(slug)
+  const { game, loading, error } = useGame(slug)
   useSeo(game ? `${game.title} — Obra Kasi Games` : undefined, game?.tagline)
 
   if (loading) {
@@ -20,6 +21,8 @@ export function GameDetailPage() {
       </main>
     )
   }
+
+  if (error) return <main><Container style={{ paddingTop: 120, paddingBottom: 120 }}><h1>Unable to load this game</h1><p>Please try again shortly.</p><Link to="/games">Back to games</Link></Container></main>
 
   if (!game) {
     return (
@@ -37,6 +40,8 @@ export function GameDetailPage() {
       </main>
     )
   }
+
+  if (game.game_page_ready === false) return <GameComingSoonPage game={game} />
 
   const accent = accentFor(game.accent, game.slug)
   const patternClass = patternClassFor(game.pattern)

@@ -6,7 +6,7 @@ import type { Game } from '../../data/types'
 
 export function EditGame() {
   const { slug } = useParams()
-  const { game, loading } = useGame(slug)
+  const { game, loading } = useGame(slug, true)
   const navigate = useNavigate()
   const handleSubmit = async (updated: Game) => {
     const result = await updateGame(slug ?? '', updated)

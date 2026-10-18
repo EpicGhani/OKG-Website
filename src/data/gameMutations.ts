@@ -2,12 +2,12 @@ import { supabase } from '../lib/supabase'
 import type { Game } from './types'
 
 export async function createGame(game: Game) {
-  const { error } = await supabase.from('games').insert(game)
+  const { error } = await supabase.from('games').insert(game).select('slug').single()
   return { error: error ? error.message : null }
 }
 
 export async function updateGame(slug: string, game: Game) {
-  const { error } = await supabase.from('games').update(game).eq('slug', slug)
+  const { error } = await supabase.from('games').update(game).eq('slug', slug).select('slug').single()
   return { error: error ? error.message : null }
 }
 

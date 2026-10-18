@@ -3,6 +3,9 @@ import type { CSSProperties, FormEvent } from 'react'
 import { useBlocker } from 'react-router-dom'
 import { Button, RichText, GameCard, PATTERNS } from '../../ui'
 import { MediaPicker } from './MediaPicker'
+import { GameBannerEditor } from './GameBannerEditor'
+import { GameBanner } from '../../ui/GameBanner'
+import { getBannerSettings } from '../../data/heroGames'
 import { useUnsavedChanges } from '../../lib/useUnsavedChanges'
 import type { Game, GameLink, DevlogAccent } from '../../data/types'
 
@@ -64,9 +67,12 @@ export function GameForm({
   const [links, setLinks] = useState<GameLink[]>(initial?.links ?? [])
   const [description, setDescription] = useState(initial?.description ?? '')
   const [featured, setFeatured] = useState(Boolean(initial?.featured))
+  const [banner, setBanner] = useState(() => getBannerSettings(initial ?? {}))
+  const [heroOrder, setHeroOrder] = useState(initial?.hero_order ?? 100)
+  const [pageReady, setPageReady] = useState(initial?.game_page_ready ?? true)
   const [error, setError] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
-  const [pickerTarget, setPickerTarget] = useState<'cover' | 'screenshot' | null>(null)
+  const [pickerTarget, setPickerTarget] = useState<'cover' | 'screenshot' | 'background' | 'foreground' | null>(null)
   const pendingPublished = useRef(initial?.published ?? true)
   const bypass = useRef(false)
 
@@ -80,10 +86,13 @@ export function GameForm({
   const previewGame: Game = {
     slug: slug || 'preview', title: title || 'Untitled', tagline, status,
     status_accent: statusAccent, year, genres, cover_image: coverImage || undefined, accent, pattern,
+    hero_banner: banner, hero_order: heroOrder, game_page_ready: pageReady,
   }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const nextSlug = slug || slugify(title)
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(nextSlug)) { setError('Use lowercase letters, numbers, and single hyphens in the slug.'); return }
     setBusy(true)
     setError(null)
     bypass.current = true
@@ -92,26 +101,33 @@ export function GameForm({
       cover_image: coverImage || undefined, screenshots,
       links: links.filter((l) => l.label.trim() && l.url.trim()),
       accent, pattern, featured, published: pendingPublished.current,
+      hero_banner: banner, hero_order: heroOrder, game_page_ready: pageReady,
     }
-    const result = await onSubmit(entry)
-    setBusy(false)
-    if (result.error) { bypass.current = false; setError(result.error) }
+    try {
+      const result = await onSubmit(entry)
+      if (result.error) { bypass.current = false; setError(result.error) }
+    } catch {
+      bypass.current = false
+      setError('Unable to save. Check your connection and try again.')
+    } finally { setBusy(false) }
   }
 
   const onPick = (url: string) => {
     if (pickerTarget === 'cover') setCoverImage(url)
     else if (pickerTarget === 'screenshot') setScreenshots((s) => [...s, url])
+    else if (pickerTarget === 'background' || pickerTarget === 'foreground') setBanner(value=>({...value,[pickerTarget]:url,[`${pickerTarget}_small`]:''}))
     setPickerTarget(null)
   }
 
   const dirty =
-    JSON.stringify({ slug, title, tagline, status, statusAccent, year, genresText, accent, pattern, coverImage, screenshots, links, description, featured }) !==
+    JSON.stringify({ slug, title, tagline, status, statusAccent, year, genresText, accent, pattern, coverImage, screenshots, links, description, featured, banner, heroOrder, pageReady }) !==
     JSON.stringify({
       slug: initial?.slug ?? '', title: initial?.title ?? '', tagline: initial?.tagline ?? '',
       status: initial?.status ?? '', statusAccent: initial?.status_accent ?? 'pula', year: initial?.year ?? '',
       genresText: (initial?.genres ?? []).join(', '), accent: initial?.accent ?? 'pula', pattern: initial?.pattern ?? 'tnalak',
       coverImage: initial?.cover_image ?? '', screenshots: initial?.screenshots ?? [], links: initial?.links ?? [],
       description: initial?.description ?? '', featured: Boolean(initial?.featured),
+      banner: getBannerSettings(initial ?? {}), heroOrder: initial?.hero_order ?? 100, pageReady: initial?.game_page_ready ?? true,
     })
   useUnsavedChanges(dirty)
   const blocker = useBlocker(useCallback(() => dirty && !bypass.current, [dirty]))
@@ -218,6 +234,11 @@ export function GameForm({
             <input type="checkbox" checked={featured} onChange={(e) => setFeatured(e.target.checked)} />
             Featured on homepage
           </label>
+          {featured && <GameBannerEditor value={banner} onChange={setBanner} order={heroOrder} onOrderChange={setHeroOrder} onChoose={setPickerTarget} />}
+          <label style={{ display:'flex', gap:10, alignItems:'center', marginTop:20, fontSize:14 }}>
+            <input type="checkbox" checked={pageReady} onChange={event=>setPageReady(event.target.checked)} />
+            Show the full game page (otherwise show “Game page coming soon”)
+          </label>
 
           {error && <p style={{ color: 'var(--pula-700)', fontSize: 13, margin: '18px 0 0' }}>{error}</p>}
 
@@ -230,6 +251,8 @@ export function GameForm({
         {/* RIGHT — live preview */}
         <div style={{ position: 'sticky', top: 24 }}>
           <p style={labelStyle}>Live preview</p>
+          {featured && <div className="banner-editor__preview"><GameBanner game={previewGame} preview /></div>}
+          {featured && <p style={{...labelStyle,marginTop:24}}>Games listing card</p>}
           <div style={{ maxWidth: 300, pointerEvents: 'none' }}>
             <GameCard game={previewGame} />
           </div>

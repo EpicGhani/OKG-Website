@@ -1,21 +1,26 @@
 # Landing banner assets
 
-Current foregrounds: Monster Girl uses `monster-girl-foreground.webp`, extracted
-losslessly from the supplied character sheet; Steps to Veridian uses
-`/images/library/bintu.webp` with a 480px variant. Hearthleaf still uses the
-temporary composition. Current art is fitted without cropping; the alignment
+Banner content is now configured in **Admin → Games** and stored in the games
+table. Apply `supabase/migrations/20261019_game_banners.sql` before deploying.
+See `docs/game-banners.md` for the migration and editing workflow.
+
+Current foregrounds: Monster Girl uses `monster-girl-site01.webp`; Steps to
+Veridian uses `veridian-site02.webp`. Both come from the updated transparent
+artist exports and include `-small.webp` mobile variants. Regenerate with
+`node scripts/import-banner-art.mjs "D:\Project Assets\OKG Assets"`.
+Hearthleaf uses the supplied
+bakery background and transparent sign, exported losslessly to WebP. The alignment
 guide below is for future purpose-designed banner exports.
 
-Configure paths in `src/data/heroGames.ts`; `null` shows the temporary CSS
-composition. Each banner links to its configured `path`, with a temporary
-game-specific coming-soon page. No CMS rows are created. When a game is ready
-in the CMS, remove its temporary route from `App.tsx` so `/games/:slug` handles it.
+Configure layers in the admin game form; missing art shows the existing patterned
+composition. Each banner links to `/games/{slug}`. Use the game-page checkbox in
+the form to switch from coming soon to the full page without changing routes.
 
 | Game | Background filename | Foreground filename |
 | --- | --- | --- |
 | Hearthleaf Corner | hearthleaf-background.webp | hearthleaf-foreground.webp |
-| Monster Girl Tactics | monster-girl-background.webp | monster-girl-foreground.webp |
-| Steps to Veridian | veridian-background.webp | veridian-foreground.webp |
+| Monster Girl Tactics | CSS gradient | monster-girl-site01.webp |
+| Steps to Veridian | CSS gradient | veridian-site02.webp |
 
 ## Export alignment
 
@@ -30,7 +35,7 @@ in the CMS, remove its temporary route from `App.tsx` so `/games/:slug` handles 
 - Monster Girl: the character/head extends above the panel.
 - Veridian: the creature/hands extend across the panel edges.
 - If the foreground includes the final title and subtitle, set
-  `foregroundIncludesTitle: true`. This visually hides the HTML wordmark but
+  the “Front image already includes the game title” checkbox. This hides the HTML wordmark but
   preserves its accessible heading. Otherwise the HTML title stays on top.
 - Keep critical artwork above the panel's bottom 14%, reserved for status.
 

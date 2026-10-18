@@ -43,6 +43,7 @@ export function AdminMedia() {
     devlogs.forEach((d) => { if ((d.body ?? '').includes(url)) names.push(d.title) })
     games.forEach((g) => {
       if ((g.description ?? '').includes(url) || g.cover_image === url || (g.screenshots ?? []).includes(url)) names.push(g.title)
+      if (g.hero_banner && [g.hero_banner.background,g.hero_banner.background_small,g.hero_banner.foreground,g.hero_banner.foreground_small].includes(url)) names.push(`${g.title} (homepage banner)`)
     })
     articles.forEach((a) => {
       if ((a.body ?? '').includes(url) || a.cover_image === url) names.push(a.title)

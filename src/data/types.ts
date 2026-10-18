@@ -4,6 +4,19 @@ export type DevlogAccent = 'pula' | 'luntian' | 'bughaw' | 'ink'
 
 export type GameLink = { label: string; url: string }
 
+export type GameBannerSettings = {
+  theme: 'hearthleaf' | 'monster-girl' | 'veridian' | 'default'
+  background: string
+  background_small: string
+  foreground: string
+  foreground_small: string
+  title_lines: string[]
+  subtitle: string
+  includes_title: boolean
+  pixel_art: boolean
+  foreground_layout: 'character' | 'logo'
+}
+
 export interface Game {
   slug: string
   title: string
@@ -19,6 +32,9 @@ export interface Game {
   accent?: DevlogAccent
   pattern?: string
   featured?: boolean
+  hero_order?: number
+  hero_banner?: Partial<GameBannerSettings> | null
+  game_page_ready?: boolean
   published?: boolean
   created_at?: string
   updated_at?: string
