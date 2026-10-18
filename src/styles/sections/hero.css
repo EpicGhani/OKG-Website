@@ -1,0 +1,198 @@
+.game-hero {
+  position: relative;
+  isolation: isolate;
+  background: var(--surface-ink);
+  color: var(--text-on-dark);
+  min-height: calc(100svh - 72px);
+  display: grid;
+  align-items: center;
+  padding: clamp(88px, 8vw, 190px) clamp(28px, 5vw, 80px) clamp(96px, 6vw, 160px);
+  box-sizing: border-box;
+}
+.game-hero__pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  --mark-color: var(--buhangin-100);
+  opacity: 0.03;
+  pointer-events: none;
+}
+.game-hero__sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+.game-hero__banners {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 2.8vw, 42px);
+}
+.game-banner {
+  --panel-lift: 0px;
+  --foreground-lift: 0px;
+  display: block;
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  aspect-ratio: 390 / 660;
+  text-decoration: none;
+  border-radius: clamp(24px, 2.8vw, 40px);
+  --banner-accent: #ffe085;
+  --banner-top: #668e68;
+  --banner-middle: #354c47;
+  --banner-bottom: #25112f;
+}
+.game-banner:focus-visible { outline: 3px solid var(--banner-accent); outline-offset: 10px; }
+.game-banner__title-layer { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.game-banner__panel, .game-banner__status {
+  transform: translateY(var(--panel-lift));
+  transition: transform 400ms var(--ease-out), box-shadow 400ms var(--ease-out);
+}
+.game-banner__foreground, .game-banner__title-layer {
+  transform: translateY(var(--foreground-lift));
+  transition: transform 400ms var(--ease-out);
+}
+.game-banner:focus-visible { --panel-lift: -8px; --foreground-lift: -26px; z-index: 3; }
+@media (hover: hover) and (pointer: fine) {
+  .game-banner:hover { --panel-lift: -8px; --foreground-lift: -26px; z-index: 3; }
+  .game-banner:hover .game-banner__panel { box-shadow: inset 0 1px 0 #ffffff40, 0 28px 48px #00000055; }
+}
+.game-banner:active { --panel-lift: -3px; --foreground-lift: -10px; }
+@media (prefers-reduced-motion: reduce) {
+  .game-banner__panel, .game-banner__status, .game-banner__foreground, .game-banner__title-layer { transform: none; transition: none; }
+}
+.game-banner--monster-girl {
+  --banner-accent: #8df2e5;
+  --banner-top: #bb303d;
+  --banner-middle: #6c1a46;
+  --banner-bottom: #260c31;
+}
+.game-banner--veridian {
+  --banner-accent: #bfdca1;
+  --banner-top: #88a7f7;
+  --banner-middle: #50568f;
+  --banner-bottom: #251139;
+}
+.game-banner__panel {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: clamp(24px, 2.8vw, 40px);
+  background: linear-gradient(165deg, var(--banner-top), var(--banner-middle) 48%, var(--banner-bottom) 92%);
+  box-shadow: inset 0 1px 0 #ffffff24, 0 16px 36px #00000024;
+}
+.game-banner__background { display: block; width: 100%; height: 100%; object-fit: cover; }
+.game-banner__shade { position: absolute; inset: 0; background: linear-gradient(0deg, var(--banner-bottom), transparent 42%); }
+/* 468 x 726 transparent canvas around a 390 x 660 panel, never clipped. */
+.game-banner__foreground {
+  position: absolute;
+  z-index: 1;
+  width: 120%;
+  height: 110%;
+  left: -10%;
+  top: -7%;
+  pointer-events: none;
+}
+.game-banner__foreground > img { width: 100%; height: 100%; display: block; object-fit: contain; }
+.game-banner--has-art .game-banner__foreground > img { object-position: center top; }
+.game-banner--monster-girl.game-banner--has-art .game-banner__foreground { height: 96%; }
+.game-banner--veridian.game-banner--has-art .game-banner__wordmark { bottom: 16%; text-shadow: 0 2px 12px var(--banner-bottom); }
+.game-banner--monster-girl.game-banner--has-art .game-banner__wordmark { top: auto; bottom: 14%; }
+.game-banner--monster-girl.game-banner--has-art .game-banner__wordmark h2 { font-size: clamp(28px, 3.3vw, 48px); text-shadow: 0 3px 0 #183f4d, 0 0 20px var(--banner-bottom); }
+.game-banner--monster-girl.game-banner--has-art .game-banner__wordmark p { margin-top: 16px; text-shadow: 0 2px 8px var(--banner-bottom); }
+/* Existing woven bands keep the temporary panels decorated without cropped symbols. */
+.game-banner__placeholder { position: absolute; left: 20%; right: 20%; bottom: 18%; opacity: 0.3; }
+/* Size the complete symbols to their wrappers and inset them from every edge. */
+.game-hero__motif { position: absolute; z-index: -1; aspect-ratio: 1; opacity: 0.22; pointer-events: none; }
+.game-hero__motif > span { display: block; }
+.game-hero__motif--sun { top: 16px; right: clamp(16px, 2vw, 48px); width: clamp(48px, 6vw, 160px); }
+.game-hero__motif--star { bottom: 32px; left: clamp(16px, 2vw, 48px); width: clamp(40px, 4vw, 104px); }
+.game-hero__trim { position: absolute; bottom: 0; left: 0; right: 0; opacity: 0.45; pointer-events: none; }
+.game-banner__wordmark { position: absolute; z-index: 2; top: 14%; left: 5%; width: 90%; text-align: center; color: var(--banner-accent); }
+.game-banner__wordmark h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.7vw, 55px);
+  font-weight: 400;
+  line-height: 1.03;
+  letter-spacing: -0.045em;
+}
+.game-banner__wordmark h2 span { display: block; }
+.game-banner--hearthleaf .game-banner__wordmark {
+  top: 10%;
+  left: -4%;
+  width: 108%;
+  padding: 22px 6px;
+  box-sizing: border-box;
+  color: #693523;
+  background: #f4cd79;
+  border: 3px solid #ffe7a3;
+  border-radius: 14px;
+  box-shadow: 0 7px 0 #ac763a, 0 14px 24px #00000024;
+  transform: rotate(-3deg);
+}
+.game-banner--monster-girl .game-banner__wordmark { top: 29%; }
+.game-banner--monster-girl .game-banner__wordmark h2 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+  font-size: clamp(30px, 4.3vw, 64px);
+  text-shadow: 0 4px 0 #183f4d;
+  transform: rotate(-5deg);
+}
+.game-banner__wordmark p {
+  margin: 30px auto 0;
+  max-width: 26ch;
+  font-family: var(--font-mono);
+  font-size: clamp(10px, 0.9vw, 13px);
+  line-height: 1.7;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ffb8dc;
+}
+.game-banner--veridian .game-banner__wordmark { top: auto; bottom: 22%; }
+.game-banner--veridian .game-banner__wordmark h2 span:first-child {
+  margin-bottom: 12px;
+  font-family: var(--font-sans);
+  font-size: 0.36em;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #f5f1f8;
+}
+.game-banner__status {
+  position: absolute;
+  z-index: 2;
+  bottom: 6%;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #e6dce9;
+}
+.game-banner__status > span { width: 5px; height: 5px; background: var(--banner-accent); border-radius: 50%; }
+@media (max-width: 700px) {
+  .game-hero { padding: 88px 36px 96px; }
+  .game-hero__banners { grid-template-columns: minmax(0, 1fr); max-width: 390px; gap: 72px; }
+  .game-banner__wordmark h2 { font-size: clamp(32px, 10vw, 55px); }
+  .game-banner--monster-girl .game-banner__wordmark h2 { font-size: clamp(38px, 12vw, 64px); }
+  .game-banner__wordmark p { font-size: 12px; }
+}
+

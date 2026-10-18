@@ -1,0 +1,11 @@
+.game-coming-soon { position: relative; isolation: isolate; display: grid; align-items: center; min-height: calc(100svh - 72px); padding-block: clamp(64px, 8vw, 120px); box-sizing: border-box; background: var(--surface-ink); color: var(--text-on-dark); }
+.game-coming-soon__pattern { position: absolute; inset: 0; z-index: -1; --mark-color: var(--buhangin-100); opacity: 0.03; pointer-events: none; }
+.game-coming-soon__content { max-width: 820px; margin-inline: auto; }
+.game-coming-soon h1 { font: 400 clamp(40px, 7vw, 80px)/1.08 var(--font-display); letter-spacing: -0.035em; margin: 24px 0; overflow-wrap: anywhere; }
+.game-coming-soon h2 { font: 400 clamp(26px, 3vw, 36px)/1.2 var(--font-display); margin: 0 0 20px; }
+.game-coming-soon p { max-width: 52ch; font-size: 18px; line-height: 1.7; color: var(--text-on-dark-muted); }
+.game-coming-soon__subtitle { font-family: var(--font-mono); }
+.game-coming-soon__band { max-width: 320px; margin-block: 36px; opacity: 0.65; }
+.game-coming-soon__links { display: flex; flex-wrap: wrap; gap: 16px 32px; margin-top: 32px; }
+.game-coming-soon__links a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--buhangin-300); font-weight: 700; text-underline-offset: 6px; }
+.game-coming-soon__links a:focus-visible { outline: 3px solid var(--buhangin-300); outline-offset: 5px; }

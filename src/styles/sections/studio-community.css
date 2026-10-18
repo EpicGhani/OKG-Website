@@ -1,0 +1,24 @@
+/* A continuous paper texture connects the studio stories and the merch panel. */
+.studio-community {
+  --community-width: 1760px;
+  --community-gutter: clamp(24px, 4vw, 64px);
+  position: relative;
+  isolation: isolate;
+  background: var(--bg);
+}
+.studio-community__pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  --mark-color: var(--buhangin-400);
+  opacity: 0.13;
+  pointer-events: none;
+}
+.studio-community__divider {
+  display: grid;
+  gap: 6px;
+  padding-block: 16px;
+  margin-block: 8px 16px;
+  opacity: 0.6;
+  pointer-events: none;
+}

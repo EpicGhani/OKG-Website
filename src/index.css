@@ -52,7 +52,7 @@ section { scroll-margin-top: 76px; }
 /* header: desktop nav vs mobile hamburger */
 .ok-burger { display: none; }
 .ok-mobile-menu { display: none; }
-@media (max-width: 760px) {
+@media (max-width: 1100px) {
   .ok-nav-desktop { display: none !important; }
   .ok-burger { display: inline-flex !important; }
   .ok-mobile-menu { display: flex; }

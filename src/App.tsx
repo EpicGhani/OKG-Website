@@ -13,6 +13,8 @@ import { Login } from './pages/admin/Login'
 import { RequireAuth } from './pages/admin/RequireAuth'
 import { GamesPage } from './pages/GamesPage'
 import { GameDetailPage } from './pages/GameDetailPage'
+import { GameComingSoonPage } from './pages/GameComingSoonPage'
+import { heroGames } from './data/heroGames'
 import { ArticlesPage } from './pages/ArticlesPage'
 import { ArticleDetailPage } from './pages/ArticleDetailPage'
 import { AdminGames } from './pages/admin/AdminGames'
@@ -30,6 +32,7 @@ const router = createBrowserRouter(
         <Route path="/devlog" element={<DevlogPage />} />
         <Route path="/devlog/:slug" element={<DevlogEntryPage />} />
         <Route path="/games" element={<GamesPage />} />
+        {heroGames.map((game) => <Route key={game.id} path={game.path} element={<GameComingSoonPage game={game} />} />)}
         <Route path="/games/:slug" element={<GameDetailPage />} />
         <Route path="/articles" element={<ArticlesPage />} />
         <Route path="/articles/:slug" element={<ArticleDetailPage />} />

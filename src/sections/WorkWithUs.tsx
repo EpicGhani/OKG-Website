@@ -1,82 +1,78 @@
-import { useState } from 'react'
-import { Button, Icon, Mark, Band, Container, Eyebrow } from '../ui'
-import { engagements } from '../data/content'
-import type { Engagement } from '../data/types'
+import { Band, Container, Eyebrow, Icon } from '../ui'
+import { studioArtwork, studioContact, studioSupport } from '../data/studio'
+import '../styles/sections/work-with-us.css'
 
-function EngageCard({ item }: { item: Engagement }) {
-  const accent = item.tone === 'pula' ? 'var(--pula-500)' : 'var(--luntian-500)'
-  const [hover, setHover] = useState(false)
+function StudioArtwork({ kind }: { kind: keyof typeof studioArtwork }) {
+  const artwork = studioArtwork[kind]
   return (
-    <div
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      style={{
-        position: 'relative', background: 'var(--surface)', borderRadius: 'var(--radius-lg)',
-        border: '2.5px solid var(--border-ink)',
-        boxShadow: hover ? '7px 7px 0 var(--itim-800)' : 'var(--shadow-stamp)',
-        transform: hover ? 'translate(-2px, -2px)' : 'none',
-        transition: 'transform var(--dur-base) var(--ease-snap), box-shadow var(--dur-base) var(--ease-snap)',
-        overflow: 'hidden', display: 'flex', flexDirection: 'column',
-      }}
-    >
-      <div style={{ height: 8, background: accent }} />
-      <div style={{ padding: '32px 32px 36px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent }}>{item.kicker}</span>
-        <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 32, letterSpacing: '-0.02em', color: 'var(--text)', margin: '10px 0 0' }}>{item.title}</h3>
-        <p style={{ fontSize: 16, lineHeight: 1.62, color: 'var(--text-muted)', margin: '14px 0 0', fontWeight: 300 }}>{item.body}</p>
-        <ul style={{ listStyle: 'none', margin: '22px 0 28px', padding: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-          {item.points.map((p) => (
-            <li key={p} style={{ display: 'flex', gap: 12, alignItems: 'center', fontSize: 15, color: 'var(--text)' }}>
-              <Icon name="check" size={17} color={accent} strokeWidth={2.5} />
-              {p}
-            </li>
-          ))}
-        </ul>
-        <div style={{ marginTop: 'auto' }}>
-          <Button variant={item.tone === 'pula' ? 'primary' : 'secondary'} size="md" iconRight={<Icon name="arrow-right" size={16} />}>{item.cta}</Button>
-        </div>
-      </div>
+    <div className={`studio-story__art studio-story__art--${kind}`} aria-hidden="true">
+      {artwork.image ? <img src={artwork.image} srcSet={artwork.srcSet} sizes="(max-width: 900px) 280px, 340px" width={960} height={701} alt="" loading="lazy" decoding="async" /> : (
+        <>
+          <div className="studio-story__art-pattern ok-tile-binakol" />
+          <div className="studio-story__art-symbol"><Icon name={artwork.icon} size={140} strokeWidth={1} /></div>
+          <div className="studio-story__art-band"><Band kind={artwork.band} color="var(--buhangin-300)" height={24} /></div>
+        </>
+      )}
     </div>
   )
 }
 
 export function WorkWithUs() {
   return (
-    <section id="work-with-us" style={{ position: 'relative', background: 'var(--bg)', overflow: 'hidden' }}>
-      <div className="ok-paper-grain" style={{ position: 'absolute', inset: 0 }} />
-      <Mark kind="sun" color="var(--luntian-200)" size={360} style={{ position: 'absolute', bottom: '-110px', right: '-120px', opacity: 0.4 }} />
-
-      <Container style={{ position: 'relative', paddingTop: 96, paddingBottom: 96 }}>
-        <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Eyebrow>**Work with us</Eyebrow>
+    <section className="studio-story" aria-labelledby="studio-about-title">
+      <div className="studio-story__pattern ok-tile-binakol" aria-hidden="true" />
+      <div className="studio-story__trim" aria-hidden="true"><Band kind="gayaman" color="var(--luntian-300)" height={22} /></div>
+      <Container width={1760} style={{ paddingInline: 'clamp(24px, 4vw, 64px)' }}>
+        <div className="studio-story__grid">
+          <div id="about-us" className="studio-story__about">
+            <Eyebrow color="var(--buhangin-300)">The people behind the games</Eyebrow>
+            <h2 id="studio-about-title">About us</h2>
+            <div className="studio-story__meaning">
+              <div className="studio-story__definition"><h3>Obra</h3><span>Creation or masterpiece</span></div>
+              <p>Aspiration needs execution. There is a fine line between arrogance and ambition. That line is drawn by the people
+who put their money where their mouth is. We learn, we earn, and we play the game of the industry. And while we
+have the time and energy, we will continue this tiring but important journey.</p>
+            </div>
+            <div className="studio-story__meaning">
+              <div className="studio-story__definition"><h3>Kasi</h3><span>Love and care</span></div>
+              <p>It’s cheesy, we know, but it is our honest dream. We’ve been making games for others for so long, professionally and
+with integrity. But now we want to make games that we think are awesome and cool. Not just because we need to,
+as part of our job. But because we want to, as creatives and as lifelong gamers.</p>
+            </div>
           </div>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 4.2vw, 50px)', lineHeight: 1.04, letterSpacing: '-0.02em', color: 'var(--text)', margin: '14px 0 0' }}>
-            **Come build with us
-          </h2>
-          <p style={{ fontSize: 18, lineHeight: 1.6, color: 'var(--text-muted)', margin: '18px auto 0', maxWidth: '52ch', fontWeight: 300 }}>
-            **Two ways in. Hire the bench for development, or bring us your game and let us help it reach the islands and beyond.
-          </p>
-        </div>
 
-        <div className="stack-mobile" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, marginTop: 48 }}>
-          {engagements.map((item) => <EngageCard key={item.id} item={item} />)}
-        </div>
+          <StudioArtwork kind="roots" />
 
-        {/* Contact strip */}
-        <div style={{
-          marginTop: 28, background: 'var(--surface-ink)', color: 'var(--text-on-dark)', borderRadius: 'var(--radius-lg)',
-          padding: '28px 36px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap',
-          position: 'relative', overflow: 'hidden',
-        }}>
-          <Band kind="okir" color="var(--pula-400)" height={20} style={{ position: 'absolute', left: 0, right: 0, bottom: 0, opacity: 0.5 }} />
-          <div>
-            <p style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 24, color: 'var(--buhangin-100)' }}>**Have something honest in the works?</p>
-            <p style={{ margin: '6px 0 0', fontSize: 15, color: 'var(--text-on-dark-muted)', fontWeight: 300 }}>**Tell us about it. We read every note, tabi-tabi po.</p>
+          <div id="work-with-us" className="studio-story__work" aria-labelledby="studio-work-title">
+            <Eyebrow color="var(--luntian-200)">Pull up a seat</Eyebrow>
+            <h2 id="studio-work-title">Work with us</h2>
+            <p className="studio-story__lead">We make games because we want to. But we still need to pay the bills.</p>
+            <p>Selfishly and with passion. Not afraid to admit it, too tired to deny it. We still have our dayjobs, we still have to make games for hire.</p>
+            <p>So
+if you want to help us bring our vision to life because you think you might like what we do, then we welcome you to the bonfire. We’ll
+do whatever it takes to be successful on our own if we need to, but helpful hands and potential friends are welcome along the way.</p>
+            <a className="studio-story__contact" href={`mailto:${studioContact.email}`}>
+              <Icon name="mail" size={22} /><span>{studioContact.email}</span><Icon name="arrow-up-right" size={18} />
+            </a>
+
+            <div className="studio-story__support" aria-labelledby="studio-support-title">
+              <h3 id="studio-support-title">Or support the studio</h3>
+              <p>Donation options are on the way.</p>
+              <ul className="studio-story__platforms">
+                {studioSupport.map((platform) => (
+                  <li key={platform.name}>
+                    {platform.url ? (
+                      <a href={platform.url} target="_blank" rel="noopener noreferrer"><Icon name={platform.icon} size={22} /><span>{platform.name}</span><Icon name="arrow-up-right" size={14} /></a>
+                    ) : (
+                      <button type="button" disabled><Icon name={platform.icon} size={22} /><span>{platform.name}</span><small>Coming soon</small></button>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <a href="mailto:hello@obrakasi.ph" style={{ textDecoration: 'none' }}>
-            <Button variant="stamp" size="lg" iconRight={<Icon name="arrow-up-right" size={17} />}>**hello@obrakasi.ph</Button>
-          </a>
+
+          <StudioArtwork kind="compass" />
         </div>
       </Container>
     </section>

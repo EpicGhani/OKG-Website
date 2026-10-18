@@ -69,9 +69,10 @@ export function MediaPicker({
 
           {tab === 'upload' ? (
             <label style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '48px 24px', border: '2px dashed var(--border-ink)', borderRadius: 'var(--radius-md)', cursor: 'pointer', textAlign: 'center' }}>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--text-muted)' }}>{uploading ? 'Uploading…' : 'Click to choose an image or GIF'}</span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--text-muted)' }}>{uploading ? 'Optimizing and uploading…' : 'Click to choose an image or GIF'}</span>
+              <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>PNG and JPG images are optimized automatically. Animations stay animated.</span>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-faint)' }}>Uploads to: {uploadFolder}/</span>
-              <input type="file" accept="image/*" onChange={onUpload} style={{ display: 'none' }} />
+              <input type="file" accept="image/*" disabled={uploading} onChange={onUpload} style={{ display: 'none' }} />
             </label>
           ) : (
             <>

@@ -1,14 +1,9 @@
 import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
-import logoCream from '../assets/logo-cream.png'
+import logoCream from '../assets/logo-cream.webp'
+import { siteNavigation, studioContactNavigation } from '../data/navigation'
 
-const studio = [
-  { label: 'Our story', to: '/#studio' },
-  { label: 'Games', to: '/games' },
-  { label: 'Devlog', to: '/devlog' },
-  { label: 'Articles', to: '/articles' },
-  { label: 'Contact', to: '/#work-with-us' },
-]
+const studio = [...siteNavigation, studioContactNavigation]
 const community = ['Discord', 'Steam', 'Itch.io', 'YouTube']
 
 const colHeading: CSSProperties = { fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--pula-300)', margin: '0 0 16px' }
@@ -25,16 +20,16 @@ export function Footer() {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
             <img src={logoCream} alt="Obra Kasi" style={{ height: '42px', display: 'block' }} />
-            <span style={{ fontFamily: 'var(--font-display)', fontSize: '22px' }}>**Obra Kasi</span>
+            <span style={{ fontFamily: 'var(--font-display)', fontSize: '22px' }}>Obra Kasi Games</span>
           </div>
           <p style={{ margin: 0, color: 'var(--itim-300)', fontSize: '14px', lineHeight: 1.6, maxWidth: '34ch' }}>
-            **We build rooted games from the islands. Folklore, pattern, and play, all generated locally.
+            We are local, made with lambanog and love.
           </p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '28px' }}>
           <div>
-            <p style={colHeading}>**Studio</p>
+            <p style={colHeading}>Studio</p>
             <ul style={listStyle}>
               {studio.map((s) => (
                 <li key={s.label}><Link to={s.to} style={linkStyle}>{s.label}</Link></li>
@@ -42,7 +37,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <p style={colHeading}>**Community</p>
+            <p style={colHeading}>Community</p>
             <ul style={listStyle}>
               {community.map((c) => (
                 <li key={c}><a href="#" style={linkStyle}>{c}</a></li>
@@ -53,8 +48,8 @@ export function Footer() {
       </div>
 
       <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: '0 clamp(20px, 5vw, 40px) 36px', display: 'flex', justifyContent: 'space-between', color: 'var(--itim-400)', fontSize: '12px', fontFamily: 'var(--font-mono)', flexWrap: 'wrap', gap: 12, boxSizing: 'border-box' }}>
-        <span>**© {currentYear} Obra Kasi Games · Proudly rooted in Manila</span>
-        <span>**Tabi-tabi po.</span>
+        <span>© {currentYear} Obra Kasi Games · Proudly rooted in Manila</span>
+        <span>Tabi-tabi po.</span>
       </div>
     </footer>
   )

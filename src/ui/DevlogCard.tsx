@@ -7,7 +7,7 @@ import type { Accent } from './devlogAccents'
 import { formatDevlogDate } from '../data/formatDate'
 import { resolvePatternClass } from './devlogAccents'
 
-export function DevlogCard({ entry, accent }: { entry: DevlogEntry; accent: Accent }) {
+export function DevlogCard({ entry, accent, compact = false }: { entry: DevlogEntry; accent: Accent; compact?: boolean }) {
   const [hover, setHover] = useState(false)
   const patternClass = resolvePatternClass(entry)
   return (
@@ -32,11 +32,11 @@ export function DevlogCard({ entry, accent }: { entry: DevlogEntry; accent: Acce
         <Band kind={accent.band} color={accent.color} height={16} style={{ opacity: 0.6 }} />
 
         <div style={{ padding: '22px 24px 26px', display: 'flex', flexDirection: 'column', gap: 10, flex: 1 }}>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent.color }}>{entry.kicker}</span>
-          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 24, lineHeight: 1.12, letterSpacing: '-0.01em', color: 'var(--text)', margin: 0 }}>{entry.title}</h3>
-          <div style={{ marginTop: 'auto', paddingTop: 14, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{formatDevlogDate(entry.created_at)}</span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontFamily: 'var(--font-mono)', fontSize: 12, color: accent.color }}>
+          {!compact && <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--update-meta-size, 11px)', letterSpacing: '0.14em', textTransform: 'uppercase', color: accent.color }}>{entry.kicker}</span>}
+          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--update-title-size, 24px)', lineHeight: 1.12, letterSpacing: '-0.01em', color: 'var(--text)', margin: 0 }}>{entry.title}</h3>
+          <div style={{ marginTop: 'auto', paddingTop: 14, display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', justifyContent: 'space-between' }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--update-meta-size, 11px)', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{formatDevlogDate(entry.created_at)}</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontFamily: 'var(--font-mono)', fontSize: 'var(--update-meta-size, 12px)', color: accent.color }}>
               Read <Icon name="arrow-right" size={14} />
             </span>
           </div>

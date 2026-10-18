@@ -1,0 +1,207 @@
+[
+  {
+    "source": "726380494_1477109990399599_5019169875700181769_n.png",
+    "output": "public/images/library/monster-girl-lineup.webp",
+    "width": 1000,
+    "height": 355,
+    "originalBytes": 405820,
+    "bytes": 96500,
+    "variant": false
+  },
+  {
+    "source": "bintu.png",
+    "output": "public/images/library/bintu.webp",
+    "width": 1000,
+    "height": 1047,
+    "originalBytes": 1890848,
+    "bytes": 118662,
+    "variant": false
+  },
+  {
+    "source": "bintu.png",
+    "output": "public/images/library/bintu-480.webp",
+    "width": 480,
+    "height": 503,
+    "originalBytes": 1890848,
+    "bytes": 48516,
+    "variant": true
+  },
+  {
+    "source": "gerudo.png",
+    "output": "public/images/library/gerudo.webp",
+    "width": 774,
+    "height": 1400,
+    "originalBytes": 1999470,
+    "bytes": 136530,
+    "variant": false
+  },
+  {
+    "source": "masipon.png",
+    "output": "public/images/library/masipon.webp",
+    "width": 1000,
+    "height": 1336,
+    "originalBytes": 2346526,
+    "bytes": 101692,
+    "variant": false
+  },
+  {
+    "source": "porcelanum.png",
+    "output": "public/images/library/porcelanum.webp",
+    "width": 1000,
+    "height": 1090,
+    "originalBytes": 1890354,
+    "bytes": 104344,
+    "variant": false
+  },
+  {
+    "source": "porcelanum.png",
+    "output": "public/images/library/porcelanum-480.webp",
+    "width": 480,
+    "height": 523,
+    "originalBytes": 1890354,
+    "bytes": 42634,
+    "variant": true
+  },
+  {
+    "source": "Tayog_BleedingRingRedux.png",
+    "output": "public/images/library/tayog-bleeding-ring.webp",
+    "width": 960,
+    "height": 701,
+    "originalBytes": 1083756,
+    "bytes": 61250,
+    "variant": false
+  },
+  {
+    "source": "Tayog_HourglassFinal.png",
+    "output": "public/images/library/tayog-hourglass.webp",
+    "width": 960,
+    "height": 701,
+    "originalBytes": 1474085,
+    "bytes": 113184,
+    "variant": false
+  },
+  {
+    "source": "Tayog_HourglassFinal.png",
+    "output": "public/images/library/tayog-hourglass-480.webp",
+    "width": 480,
+    "height": 350,
+    "originalBytes": 1474085,
+    "bytes": 31848,
+    "variant": true
+  },
+  {
+    "source": "Tayog_Mandrake.png",
+    "output": "public/images/library/tayog-mandrake.webp",
+    "width": 960,
+    "height": 701,
+    "originalBytes": 909711,
+    "bytes": 61990,
+    "variant": false
+  },
+  {
+    "source": "Tayog_Mandrake.png",
+    "output": "public/images/library/tayog-mandrake-480.webp",
+    "width": 480,
+    "height": 350,
+    "originalBytes": 909711,
+    "bytes": 22968,
+    "variant": true
+  },
+  {
+    "source": "Tayog_Masquerade.png",
+    "output": "public/images/library/tayog-masquerade.webp",
+    "width": 960,
+    "height": 701,
+    "originalBytes": 920015,
+    "bytes": 72408,
+    "variant": false
+  },
+  {
+    "source": "Tayog_Pendant.png",
+    "output": "public/images/library/tayog-pendant.webp",
+    "width": 960,
+    "height": 701,
+    "originalBytes": 840507,
+    "bytes": 45162,
+    "variant": false
+  },
+  {
+    "source": "Tayog_Potion.png",
+    "output": "public/images/library/tayog-potion.webp",
+    "width": 960,
+    "height": 701,
+    "originalBytes": 728369,
+    "bytes": 47226,
+    "variant": false
+  },
+  {
+    "source": "Tayog_Sabre.png",
+    "output": "public/images/library/tayog-sabre.webp",
+    "width": 960,
+    "height": 701,
+    "originalBytes": 715322,
+    "bytes": 32082,
+    "variant": false
+  },
+  {
+    "source": "Tayog_SampaguitaBurning.png",
+    "output": "public/images/library/tayog-sampaguita-burning.webp",
+    "width": 960,
+    "height": 701,
+    "originalBytes": 1124863,
+    "bytes": 72698,
+    "variant": false
+  },
+  {
+    "source": "Tayog_Shield.png",
+    "output": "public/images/library/tayog-shield.webp",
+    "width": 960,
+    "height": 701,
+    "originalBytes": 960289,
+    "bytes": 66138,
+    "variant": false
+  },
+  {
+    "source": "Tayog_SkyBowl.png",
+    "output": "public/images/library/tayog-sky-bowl.webp",
+    "width": 960,
+    "height": 701,
+    "originalBytes": 998464,
+    "bytes": 51014,
+    "variant": false
+  },
+  {
+    "source": "logo-cream.png",
+    "output": "src/assets/logo-cream.webp",
+    "width": 160,
+    "height": 150,
+    "originalBytes": 100619,
+    "bytes": 18080,
+    "variant": false
+  },
+  {
+    "source": "logo.png",
+    "output": "public/logo.webp",
+    "width": 96,
+    "height": 90,
+    "originalBytes": 66363,
+    "bytes": 5208,
+    "variant": false
+  },
+  {
+    "source": "726380494_1477109990399599_5019169875700181769_n.png",
+    "output": "public/images/hero/monster-girl-foreground.webp",
+    "width": 342,
+    "height": 608,
+    "originalBytes": 405820,
+    "bytes": 37958,
+    "variant": true,
+    "crop": {
+      "left": 125,
+      "top": 76,
+      "width": 342,
+      "height": 608
+    },
+    "extraction": "Original retained RGB pixels; neutral white matte removed (minimum RGB 235, maximum channel difference 5), one-pixel matte edge trimmed; lossless WebP"
+  }
+]

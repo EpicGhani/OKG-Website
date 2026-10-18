@@ -36,7 +36,7 @@ export function Icon({ name, size = 18, color = 'currentColor', strokeWidth = 2,
   return <LucideIcon size={size} color={color} strokeWidth={strokeWidth} style={style} />
 }
 
-interface ArtFrameProps { art: ServiceArt; height?: number }
+interface ArtFrameProps { art: ServiceArt; height?: CSSProperties['height'] }
 export function ArtFrame({ art, height = 360 }: ArtFrameProps) {
   return (
     <div style={{
