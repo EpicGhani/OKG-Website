@@ -41,7 +41,9 @@ remains the social-sharing image. Neither original logo PNG is loaded in the UI.
 
 New admin PNG/JPEG uploads are converted to WebP before storage, with a 2400px
 maximum long edge and no upscaling. Transparent PNGs retain transparency;
-animated PNG/GIF, existing WebP, and SVG uploads are preserved. Existing remote
+animated PNG/GIF and existing WebP uploads are preserved. New uploads accept
+PNG/JPEG/WebP/GIF/AVIF up to 10 MiB; SVG uploads are rejected for security (the
+repository's vector motifs remain unchanged). Existing remote
 content is not rewritten. Browser regression checks can be run at
 `/tests/image-upload.html` on the Vite development server; they send no uploads
 and are excluded from the production build.

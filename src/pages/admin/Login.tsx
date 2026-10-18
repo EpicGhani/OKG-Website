@@ -37,11 +37,11 @@ export function Login() {
         <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 30, letterSpacing: '-0.02em', color: 'var(--text)', margin: 0 }}>Admin sign in</h1>
         <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)', margin: '6px 0 24px' }}>Obra Kasi dashboard</p>
 
-        <label style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 6 }}>Email</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required style={inputStyle} />
+        <label htmlFor="admin-email" style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 6 }}>Email</label>
+        <input id="admin-email" autoComplete="username" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required style={inputStyle} />
 
-        <label style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '16px 0 6px' }}>Password</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required style={inputStyle} />
+        <label htmlFor="admin-password" style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '16px 0 6px' }}>Password</label>
+        <input id="admin-password" autoComplete="current-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required style={inputStyle} />
 
         {error && <p style={{ color: 'var(--pula-700)', fontSize: 13, margin: '14px 0 0' }}>{error}</p>}
 

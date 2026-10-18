@@ -1,4 +1,5 @@
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterProvider } from 'react-router-dom'
+import { RouteMetadata } from './ui/RouteMetadata'
 import { Layout } from './pages/Layout'
 import { Home } from './pages/Home'
 import { DevlogPage } from './pages/DevlogPage'
@@ -26,7 +27,7 @@ import { EditArticle } from './pages/admin/EditArticle'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
+    <Route element={<><RouteMetadata /><Outlet /></>}>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/devlog" element={<DevlogPage />} />
@@ -59,7 +60,7 @@ const router = createBrowserRouter(
         <Route path="articles/new" element={<NewArticle />} />
         <Route path="articles/:slug/edit" element={<EditArticle />} />
       </Route>
-    </>,
+    </Route>,
   ),
 )
 

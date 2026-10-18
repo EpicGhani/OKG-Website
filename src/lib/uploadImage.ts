@@ -1,11 +1,14 @@
 import { supabase } from './supabase'
 import { prepareImageUpload } from './prepareImageUpload'
+import { validateImageUpload } from './validateImageUpload'
 
 export async function uploadImage(
   file: File,
   folder = 'devlog',
 ): Promise<{ url: string | null; error: string | null }> {
   try {
+    if (!['devlog', 'games', 'articles'].includes(folder)) throw new Error('Invalid upload destination.')
+    await validateImageUpload(file)
     file = await prepareImageUpload(file)
   } catch (error) {
     return { url: null, error: error instanceof Error ? error.message : 'Could not prepare this image for upload.' }
